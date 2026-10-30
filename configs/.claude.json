@@ -13,6 +13,19 @@
         "--project-from-cwd"
       ],
       "command": "serena"
+    },
+    "scrapling": {
+      "env": {},
+      "type": "stdio",
+      "command": "scrapling-mcp"
+    },
+    "claude-mem": {
+      "env": {},
+      "type": "stdio",
+      "args": [
+        "mcp"
+      ],
+      "command": "claude-mem"
     }
   },
   "hasSeenTasksHint": true,

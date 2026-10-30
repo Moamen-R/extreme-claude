@@ -204,7 +204,7 @@
     "open-code-review@open-code-review": true,
     "superpowers@superpowers-dev": true,
     "ui-ux-pro-max@ui-ux-pro-max-skill": true,
-    "claude-mem@thedotmack": false,
+    "claude-mem@thedotmack": true,
     "payload@payload-marketplace": true,
     "oh-my-claudecode@omc": true,
     "planning-with-files@planning-with-files": true,

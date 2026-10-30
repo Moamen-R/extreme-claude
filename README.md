@@ -1,6 +1,6 @@
 # Claude Code & Multi-Agent AI Ecosystem (Windows Setup)
 
-A turnkey, sanitized starter pack to install and configure **Claude Code** alongside a complete AI engineering toolchain (**OmniRoute**, **Serena MCP**, **Graphify**, **OpenCode**, **88 Custom Specialist Agents**, and **174 Community Plugins**).
+A turnkey, sanitized starter pack to install and configure **Claude Code** alongside a complete AI engineering toolchain (**OmniRoute**, **Serena MCP**, **Graphify**, **Claude-Mem**, **Scrapling**, **Agent Reach**, **OpenCode**, **88 Custom Specialist Agents**, and **174 Community Plugins**).
 
 All personal credentials, private tokens, API keys, and session histories have been completely removed.
 
@@ -16,9 +16,12 @@ All personal credentials, private tokens, API keys, and session histories have b
 2. **88 Custom Specialist Agents (`~/.claude/agents/`)**:
    - Ready-to-use domain agents across Frontend, Backend Architecture, Security, Penetration Testing, Database Optimization, Code Review, Systems Programming, Accessibility, and AI/ML pipelines.
 
-3. **Code Intelligence & Knowledge Graph MCPs**:
+3. **Persistent Memory & Web Intelligence MCPs**:
+   - **Claude-Mem**: Cross-session persistent memory compression engine, session lifecycle hooks, and progressive disclosure search MCP (`claude-mem mcp`).
+   - **Scrapling**: Stealth browser & adaptive web scraping framework with Cloudflare Turnstile bypass, anti-bot circumvention, `scrapling-mcp` stdio MCP server, and official agent skill.
+   - **Agent Reach**: Multi-platform internet intelligence router covering 16 platforms (Twitter/X, Reddit, Bilibili, Xiaohongshu, YouTube, GitHub, LinkedIn, V2EX, RSS, Web Reader, and more).
    - **Serena Agent**: Code intelligence & AST navigation MCP.
-   - **Graphify**: Codebase knowledge graph indexing tool.
+   - **Graphify**: Codebase knowledge graph indexing tool (`graphify query`, `graphify path`, `graphify explain`).
    - **ChatPRD**: Product requirement document MCP integration.
 
 4. **OmniRoute AI Router**:
@@ -41,9 +44,9 @@ powershell -NoProfile -ExecutionPolicy RemoteSigned -File .\Install-ClaudeSetup.
 
 The script will automatically:
 1. Verify / install Node.js and Astral `uv`.
-2. Install `serena-agent` and `graphifyy` via `uv`.
-3. Install `@anthropic-ai/claude-code`, `omniroute`, and ecosystem CLIs via `npm`.
-4. Deploy all 88 specialist agents, custom skills, and MCP settings to your user profile (`~/.claude` and `~/.claude.json`).
+2. Install `serena-agent`, `graphifyy`, and `scrapling[ai]` via `uv`.
+3. Install `@anthropic-ai/claude-code`, `claude-mem`, `omniroute`, and ecosystem CLIs via `npm`.
+4. Deploy all 88 specialist agents, custom skills (including `scrapling-official` and `agent-reach`), and MCP settings to your user profile (`~/.claude` and `~/.claude.json`).
 
 ---
 
@@ -95,4 +98,14 @@ serena --help
 
 # Check Graphify
 graphify --help
+
+# Check Claude-Mem Persistent Memory
+claude-mem status
+
+# Check Scrapling Stealth Scraper & MCP
+scrapling --help
+scrapling-mcp --help
+
+# Check Agent Reach Multi-Platform Router
+agent-reach doctor
 ```

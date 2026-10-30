@@ -46,13 +46,14 @@ if (-not $uvCmd) {
 }
 
 # ------------------------------------------------------------------------------
-# 3. Install Python AI MCP Tools (Serena, Graphify)
+# 3. Install Python AI MCP Tools (Serena, Graphify, Scrapling, Agent Reach)
 # ------------------------------------------------------------------------------
-Write-Host "[3/6] Installing Serena Agent and Graphify MCP tools via uv..." -ForegroundColor Yellow
+Write-Host "[3/6] Installing Serena Agent, Graphify, and Scrapling MCP tools via uv..." -ForegroundColor Yellow
 try {
     uv tool install --force serena-agent
     uv tool install --force graphifyy
-    Write-Host "Serena and Graphify successfully installed." -ForegroundColor Green
+    uv tool install --force "scrapling[ai]"
+    Write-Host "Serena, Graphify, and Scrapling successfully installed." -ForegroundColor Green
 } catch {
     Write-Warning "uv tool install encountered a notice: $_"
 }
@@ -67,12 +68,13 @@ if ($userPath -notlike "*$localBin*") {
 }
 
 # ------------------------------------------------------------------------------
-# 4. Install Global NPM Tools (Official Claude Code, OmniRoute, OpenCode, etc.)
+# 4. Install Global NPM Tools (Official Claude Code, OmniRoute, OpenCode, Claude-Mem, etc.)
 # ------------------------------------------------------------------------------
-Write-Host "[4/6] Installing Claude Code and ecosystem CLIs via npm..." -ForegroundColor Yellow
+Write-Host "[4/6] Installing Claude Code, Claude-Mem, and ecosystem CLIs via npm..." -ForegroundColor Yellow
 $npmPackages = @(
     "@anthropic-ai/claude-code",
     "omniroute",
+    "claude-mem",
     "@opencode/cli",
     "opencode-ai",
     "ruflo",
@@ -86,6 +88,14 @@ $npmPackages = @(
 foreach ($pkg in $npmPackages) {
     Write-Host "  -> Installing $pkg..." -ForegroundColor Gray
     npm install -g $pkg
+}
+
+# Configure Claude-Mem hook launcher and plugin
+try {
+    Write-Host "  -> Configuring Claude-Mem persistent memory hooks..." -ForegroundColor Gray
+    claude-mem install --ide claude-code --provider claude --no-auto-start
+} catch {
+    Write-Warning "Claude-Mem initial setup notice: $_"
 }
 
 # ------------------------------------------------------------------------------
@@ -141,6 +151,9 @@ Write-Host "  ✓ 88 Custom Specialist Agents in ~/.claude/agents" -ForegroundCo
 Write-Host "  ✓ 17 Marketplaces and 174 Plugins configured" -ForegroundColor White
 Write-Host "  ✓ OmniRoute Smart AI Router CLI" -ForegroundColor White
 Write-Host "  ✓ Serena Code Intelligence MCP & Graphify" -ForegroundColor White
+Write-Host "  ✓ Claude-Mem Persistent Memory & MCP" -ForegroundColor White
+Write-Host "  ✓ Scrapling Stealth Web Scraping & MCP (scrapling-mcp)" -ForegroundColor White
+Write-Host "  ✓ Agent Reach Multi-Platform Intelligence Router" -ForegroundColor White
 Write-Host ""
 Write-Host "Next Steps:" -ForegroundColor Yellow
 Write-Host "1. Open a new PowerShell terminal so updated PATH takes effect." -ForegroundColor White
