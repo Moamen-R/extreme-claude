@@ -140,10 +140,29 @@ $omniTarget = Join-Path $UserProfile ".omniroute"
 if (-not (Test-Path $omniTarget)) {
     New-Item -ItemType Directory -Path $omniTarget -Force | Out-Null
 }
+$srcEnv = Join-Path $ConfigsDir ".omniroute\.env"
 $envExample = Join-Path $ConfigsDir ".omniroute\.env.example"
 $targetEnv = Join-Path $omniTarget ".env"
-if (-not (Test-Path $targetEnv)) {
+if (Test-Path $srcEnv) {
+    Copy-Item -Path $srcEnv -Destination $targetEnv -Force
+} elseif (-not (Test-Path $targetEnv)) {
     Copy-Item -Path $envExample -Destination $targetEnv -Force
+}
+$srcSqlite = Join-Path $ConfigsDir ".omniroute\storage.sqlite"
+$targetSqlite = Join-Path $omniTarget "storage.sqlite"
+if (Test-Path $srcSqlite) {
+    Copy-Item -Path $srcSqlite -Destination $targetSqlite -Force
+}
+
+# Extra configs (.config, .omc, .claude-flow, .claude-mem)
+$extraDirs = @(".config", ".omc", ".claude-flow", ".claude-mem")
+foreach ($extra in $extraDirs) {
+    $extraSrc = Join-Path $ConfigsDir $extra
+    if (Test-Path $extraSrc) {
+        $extraDst = Join-Path $UserProfile $extra
+        New-Item -ItemType Directory -Path $extraDst -Force | Out-Null
+        Copy-Item -Path (Join-Path $extraSrc "*") -Destination $extraDst -Recurse -Force
+    }
 }
 
 # ------------------------------------------------------------------------------

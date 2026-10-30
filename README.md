@@ -1,8 +1,8 @@
-# Claude Code & Multi-Agent AI Ecosystem (Windows Setup)
+# Claude Code & Multi-Agent AI Ecosystem (Universal Windows & Linux Setup)
 
-A turnkey, sanitized starter pack to install and configure **Claude Code** alongside a complete AI engineering toolchain (**OmniRoute**, **Serena MCP**, **Graphify**, **Claude-Mem**, **Scrapling**, **Agent Reach**, **OpenCode**, **88 Custom Specialist Agents**, and **174 Community Plugins**).
+A turnkey, sanitized starter pack to install and configure **Claude Code** alongside a complete AI engineering toolchain (**OmniRoute**, **Serena MCP**, **Graphify**, **Claude-Mem**, **Scrapling**, **Agent Reach**, **OpenCode**, **88 Custom Specialist Agents**, **27+ Global Skills**, and **174 Community Plugins**).
 
-All personal credentials, private tokens, API keys, and session histories have been completely removed.
+Fully merged and cross-platform compatible for **Windows 10 / 11** and **Ubuntu Linux** with zero conflicts.
 
 ---
 
@@ -10,14 +10,14 @@ All personal credentials, private tokens, API keys, and session histories have b
 
 1. **Official Claude Code CLI**:
    - Automated global installation from Anthropic (`@anthropic-ai/claude-code`).
-   - Configured with 17 curated marketplaces and 174 enabled plugins.
+   - Configured with 18 curated marketplaces (including `hyperframes`, `superpowers`, `omc`, etc.) and 174 enabled plugins.
    - Clean pre-configured tool-use guards and hooks.
 
 2. **88 Custom Specialist Agents (`~/.claude/agents/`)**:
    - Ready-to-use domain agents across Frontend, Backend Architecture, Security, Penetration Testing, Database Optimization, Code Review, Systems Programming, Accessibility, and AI/ML pipelines.
 
 3. **Persistent Memory, Skills Suite & Web Intelligence MCPs**:
-   - **Curated Global Skills Suite (`~/.claude/skills/`)**: Includes `agent-browser`, `caveman`, `code-review`, `design-taste-frontend`, `redesign-existing-projects`, `resolving-merge-conflicts`, `git-guardrails-claude-code`, `grill-with-docs`, `improve-codebase-architecture`, `setup-matt-pocock-skills`, `triage`, `wayfinder`, `writing-for-agents`, `scrapling-official`, and `agent-reach`.
+   - **Curated Global Skills Suite (`~/.claude/skills/`)**: Includes `agent-browser`, `caveman`, `code-review`, `design-taste-frontend`, `redesign-existing-projects`, `resolving-merge-conflicts`, `git-guardrails-claude-code`, `grill-with-docs`, `improve-codebase-architecture`, `setup-matt-pocock-skills`, `triage`, `wayfinder`, `writing-for-agents`, `scrapling-official`, `agent-reach`, and more.
    - **Claude-Mem**: Cross-session persistent memory compression engine, session lifecycle hooks, and progressive disclosure search MCP (`claude-mem mcp`).
    - **Scrapling**: Stealth browser & adaptive web scraping framework with Cloudflare Turnstile bypass, anti-bot circumvention, `scrapling-mcp` stdio MCP server, and official agent skill.
    - **Agent Reach**: Multi-platform internet intelligence router covering 16 platforms (Twitter/X, Reddit, Bilibili, Xiaohongshu, YouTube, GitHub, LinkedIn, V2EX, RSS, Web Reader, and more).
@@ -32,22 +32,42 @@ All personal credentials, private tokens, API keys, and session histories have b
 
 ## 🚀 Quick Installation (1-Click)
 
-### Step 1: Requirements
-- **Windows 10 / 11**
-- **Node.js 20+ or 22 LTS** (the installer will prompt to install it via winget if missing).
+### 🪟 Windows Setup
 
-### Step 2: Run Installer
-Right-click `setup.bat` and select **Run as Administrator** (or double-click to run), **OR** open PowerShell in this directory and run:
+#### Option 1: 1-Click Batch Launcher
+Double-click `setup.bat` (or right-click and select **Run as Administrator**).
 
+#### Option 2: PowerShell
+Open PowerShell in this directory and run:
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\Install-ClaudeSetup.ps1
 ```
 
-The script will automatically:
-1. Verify / install Node.js and Astral `uv`.
+The installer will:
+1. Verify / install Node.js (v22 LTS) and Astral `uv`.
 2. Install `serena-agent`, `graphifyy`, and `scrapling[ai]` via `uv`.
-3. Install `@anthropic-ai/claude-code`, `claude-mem`, `omniroute`, and ecosystem CLIs via `npm`.
-4. Deploy all 88 specialist agents, custom skills (including `scrapling-official` and `agent-reach`), and MCP settings to your user profile (`~/.claude` and `~/.claude.json`).
+3. Install `@anthropic-ai/claude-code`, `omniroute`, `claude-mem`, `skills`, and ecosystem CLIs via `npm`.
+4. Deploy all 88 specialist agents, 27+ global skills, and MCP configurations to `~/.claude` and `~/.claude.json`.
+
+---
+
+### 🐧 Ubuntu Linux Setup
+
+#### 1-Click Bash Installer
+In a terminal inside this directory, run:
+```bash
+chmod +x install.sh
+./install.sh
+```
+*(Or run `./setup.sh`)*
+
+The Linux installer will:
+1. Install base build dependencies (`curl`, `git`, `build-essential`, `python3`, `sqlite3`, etc.).
+2. Install Node.js 22 LTS via NodeSource.
+3. Install Astral `uv`, `serena-agent`, `graphifyy`, and `scrapling[ai]`.
+4. Install `@anthropic-ai/claude-code`, `omniroute`, `claude-mem`, `skills`, and CLIs globally.
+5. Deploy all configurations, agents, skills, and MCP definitions to `$HOME/.claude`.
+6. Configure OmniRoute as an automated `systemd` user service running on port 20128.
 
 ---
 
