@@ -1,11 +1,5 @@
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "http://localhost:20128/",
-    "ANTHROPIC_AUTH_TOKEN": "omniroute",
-    "ANTHROPIC_MODEL": "antigravity/gemini-3.8-flash-high",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "antigravity/gemini-3.8-flash-high",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "antigravity/gemini-3.8-flash-high",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "kc/dots-studio/dots-3-note-preview:free",
     "CLAUDE_CODE_MAX_CONTEXT_TOKENS": "1048576",
     "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "1000000",
     "CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT": "1",

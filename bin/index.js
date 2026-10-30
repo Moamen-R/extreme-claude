@@ -63,18 +63,33 @@ function updateSkills() {
 
 function runSetup() {
   console.log('\n[Extreme-Claude] Detecting platform and launching setup...\n');
+
+  let modeArg = '';
+  const modeIdx = args.indexOf('--mode');
+  if (modeIdx !== -1 && args[modeIdx + 1]) {
+    modeArg = args[modeIdx + 1].toLowerCase() === 'omniroute' ? 'OmniRoute' : 'Official';
+  }
+
   if (isWindows) {
     const psScript = path.join(rootDir, 'Install-ClaudeSetup.ps1');
+    const psArgs = ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', psScript];
+    if (modeArg) {
+      psArgs.push('-Mode', modeArg);
+    }
     console.log(`Detected Windows. Launching PowerShell: ${psScript}`);
-    const result = spawnSync('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', psScript], {
+    const result = spawnSync('powershell.exe', psArgs, {
       stdio: 'inherit',
       cwd: rootDir
     });
     process.exit(result.status || 0);
   } else {
     const shScript = path.join(rootDir, 'install.sh');
+    const shArgs = [shScript];
+    if (modeArg) {
+      shArgs.push(modeArg);
+    }
     console.log(`Detected Linux/Unix. Launching Bash: ${shScript}`);
-    const result = spawnSync('bash', [shScript], {
+    const result = spawnSync('bash', shArgs, {
       stdio: 'inherit',
       cwd: rootDir
     });

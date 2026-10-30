@@ -138,36 +138,30 @@ All skills are installed at global user scope (`~/.claude/skills/`) and tracked 
 
 ---
 
-## 🔑 How to Add Your API Keys & Start Working
+## 🔑 AI Backend Options: Official Claude vs. OmniRoute
 
-You can run Claude Code in two ways:
+During setup (via Batch, PowerShell, Bash, or NPX), the installer will prompt you to choose your AI backend mode:
 
-### Mode A: Direct Official Anthropic (Standard)
-If you have an Anthropic Claude Pro/Team subscription or an Anthropic API Key:
-1. Open `~/.claude/settings.json` in any text editor.
-2. In the `"env"` section, remove or comment out `"ANTHROPIC_BASE_URL"` and `"ANTHROPIC_AUTH_TOKEN"`.
-3. Open a new terminal and run:
-   ```bash
-   claude
-   ```
-4. Follow the prompt to log in via browser.
+### 🌟 Option 1: Official Anthropic Claude (Default / Recommended)
+**Direct connection to Anthropic's official API (`api.anthropic.com`)**
+- **Why Choose This**:
+  - You have an Anthropic Claude Pro, Team, or Enterprise subscription, or an official Anthropic API key.
+  - Zero local proxy overhead or background processes.
+  - Full native access to Claude 3.5 Sonnet, Claude 3 Opus, and Haiku with standard web OAuth login (`claude login`).
+  - No configuration needed: just launch `claude` and start coding.
 
 ---
 
-### Mode B: OmniRoute Multi-Model Routing (Recommended)
-If you want to use OmniRoute to route across Gemini, DeepSeek, OpenAI, or local models:
-1. Open a terminal and start the OmniRoute background router:
-   ```bash
-   omniroute serve
-   ```
-   *(On Ubuntu, OmniRoute starts automatically as a systemd user service).*
-2. Open your browser to `http://localhost:20128/` to access the OmniRoute Dashboard.
-3. Go to **Providers**, select the AI providers you use (Google Gemini, OpenAI, OpenRouter, DeepSeek, etc.), and paste your API keys.
-4. In another terminal window, run:
-   ```bash
-   claude
-   ```
-   Claude Code will automatically connect to your local OmniRoute on port 20128 using your models with 1M context windows.
+### 🔀 Option 2: OmniRoute Smart AI Router (Optional)
+**Local smart proxy running on `http://localhost:20128/`**
+- **Why Choose This**:
+  - You want to use **Google Gemini 1.5/2.0** with massive **1,000,000-token context windows**.
+  - You want to use **OpenAI (GPT-4o)**, **DeepSeek (V3 / R1)**, **OpenRouter**, or local **Ollama/vLLM** models disguised as Claude.
+  - You want to route different agent tasks to different models to drastically cut API token costs.
+- **How to Use**:
+  1. Start the router: `omniroute serve` *(on Ubuntu, this runs automatically as a systemd service)*.
+  2. Open your browser to `http://localhost:20128/` to configure your API keys (Gemini, OpenAI, DeepSeek, etc.).
+  3. Run `claude` — all requests will route through OmniRoute with extended context.
 
 ---
 

@@ -4,11 +4,43 @@
     Installs Official Claude Code, OmniRoute, Serena, Graphify, OpenCode, and all agents/skills.
 #>
 
+param(
+    [ValidateSet("Official", "OmniRoute", "")]
+    [string]$Mode = ""
+)
+
 $ErrorActionPreference = "Stop"
 
 Write-Host "==========================================================" -ForegroundColor Cyan
 Write-Host "  Claude Code & AI Ecosystem Installer for Windows       " -ForegroundColor Green
 Write-Host "==========================================================" -ForegroundColor Cyan
+Write-Host ""
+
+if ([string]::IsNullOrWhiteSpace($Mode)) {
+    Write-Host "----------------------------------------------------------" -ForegroundColor DarkCyan
+    Write-Host "  Select AI Provider Backend for Claude Code              " -ForegroundColor White
+    Write-Host "----------------------------------------------------------" -ForegroundColor DarkCyan
+    Write-Host "How would you like Claude Code to connect?" -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "  [1] Official Anthropic Claude (Default / Recommended)" -ForegroundColor Green
+    Write-Host "      - Directly connects to official Anthropic API & Claude Pro/Team." -ForegroundColor Gray
+    Write-Host "      - Native Claude 3.5 Sonnet / Opus models with standard web login." -ForegroundColor Gray
+    Write-Host "      - Why choose this: Zero proxy overhead, official Anthropic support." -ForegroundColor DarkGray
+    Write-Host ""
+    Write-Host "  [2] OmniRoute Smart AI Router (Multi-Model Gateway)" -ForegroundColor Yellow
+    Write-Host "      - Local proxy running on http://localhost:20128/" -ForegroundColor Gray
+    Write-Host "      - Routes requests to Google Gemini (1M context), OpenAI, DeepSeek, Ollama." -ForegroundColor Gray
+    Write-Host "      - Why choose this: Use non-Anthropic models or cost-effective third-party keys." -ForegroundColor DarkGray
+    Write-Host ""
+
+    $choice = Read-Host "Select option [1 for Official, 2 for OmniRoute] (Press Enter for Default [1])"
+    if ($choice -eq "2") {
+        $Mode = "OmniRoute"
+    } else {
+        $Mode = "Official"
+    }
+}
+Write-Host "Configuring for backend mode: $Mode" -ForegroundColor Cyan
 Write-Host ""
 
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -119,6 +151,29 @@ New-Item -ItemType Directory -Path (Join-Path $claudeTarget "skills") -Force | O
 New-Item -ItemType Directory -Path (Join-Path $claudeTarget "commands") -Force | Out-Null
 
 Copy-Item -Path (Join-Path $ConfigsDir ".claude\settings.json") -Destination (Join-Path $claudeTarget "settings.json") -Force
+$targetSettings = Join-Path $claudeTarget "settings.json"
+
+if ($Mode -eq "OmniRoute") {
+    Write-Host "  -> Injecting OmniRoute multi-model proxy settings into settings.json..." -ForegroundColor Gray
+    try {
+        $cfg = Get-Content $targetSettings -Raw | ConvertFrom-Json
+        if (-not $cfg.env) {
+            $cfg | Add-Member -MemberType NoteProperty -Name "env" -Value (New-Object PSObject)
+        }
+        $cfg.env | Add-Member -MemberType NoteProperty -Name "ANTHROPIC_BASE_URL" -Value "http://localhost:20128/" -Force
+        $cfg.env | Add-Member -MemberType NoteProperty -Name "ANTHROPIC_AUTH_TOKEN" -Value "omniroute" -Force
+        $cfg.env | Add-Member -MemberType NoteProperty -Name "ANTHROPIC_MODEL" -Value "antigravity/gemini-3.8-flash-high" -Force
+        $cfg.env | Add-Member -MemberType NoteProperty -Name "ANTHROPIC_DEFAULT_SONNET_MODEL" -Value "antigravity/gemini-3.8-flash-high" -Force
+        $cfg.env | Add-Member -MemberType NoteProperty -Name "ANTHROPIC_DEFAULT_OPUS_MODEL" -Value "antigravity/gemini-3.8-flash-high" -Force
+        $cfg.env | Add-Member -MemberType NoteProperty -Name "ANTHROPIC_DEFAULT_HAIKU_MODEL" -Value "kc/dots-studio/dots-3-note-preview:free" -Force
+        $cfg | ConvertTo-Json -Depth 30 | Set-Content -Path $targetSettings -Encoding UTF8
+    } catch {
+        Write-Warning "OmniRoute configuration notice: $_"
+    }
+} else {
+    Write-Host "  -> Configured for Official Anthropic Claude (direct connection)." -ForegroundColor Gray
+}
+
 Copy-Item -Path (Join-Path $ConfigsDir ".claude\CLAUDE.md") -Destination (Join-Path $claudeTarget "CLAUDE.md") -Force
 Copy-Item -Path (Join-Path $ConfigsDir ".claude\agents\*") -Destination (Join-Path $claudeTarget "agents\") -Force
 Copy-Item -Path (Join-Path $ConfigsDir ".claude\commands\*") -Destination (Join-Path $claudeTarget "commands\") -Recurse -Force
@@ -204,9 +259,13 @@ Write-Host '  [+] Curated Skills Suite (Agent Browser, Caveman, Taste, Wayfinder
 Write-Host ""
 Write-Host "Next Steps:" -ForegroundColor Yellow
 Write-Host "1. Open a new PowerShell terminal so updated PATH takes effect." -ForegroundColor White
-Write-Host "2. (Option A - Direct Claude): If using official Anthropic API keys:" -ForegroundColor Gray
-Write-Host "     Simply run 'claude' and log in." -ForegroundColor White
-Write-Host "3. (Option B - OmniRoute): If using OmniRoute to route across AI models:" -ForegroundColor Gray
-Write-Host "     Run 'omniroute serve' to start your local proxy on port 20128," -ForegroundColor White
-Write-Host "     open http://localhost:20128 to configure your provider keys, then run 'claude'." -ForegroundColor White
+if ($Mode -eq "OmniRoute") {
+    Write-Host "2. (OmniRoute Mode Activated):" -ForegroundColor Gray
+    Write-Host "     Run 'omniroute serve' to start your local proxy on port 20128," -ForegroundColor White
+    Write-Host "     open http://localhost:20128 to configure your AI providers (Gemini, OpenAI, etc.)," -ForegroundColor White
+    Write-Host "     then run 'claude'." -ForegroundColor White
+} else {
+    Write-Host "2. (Official Anthropic Claude Mode Activated):" -ForegroundColor Gray
+    Write-Host "     Simply run 'claude' and log in with your Anthropic subscription or API key." -ForegroundColor White
+}
 Write-Host ""

@@ -21,6 +21,41 @@ echo -e "${GREEN}  Claude Code & AI Ecosystem Installer for Ubuntu    ${NC}"
 echo -e "${BLUE}======================================================${NC}"
 echo ""
 
+BACKEND_MODE="${1:-}"
+
+if [ -z "$BACKEND_MODE" ]; then
+    echo -e "${BLUE}------------------------------------------------------${NC}"
+    echo -e "${GREEN}  Select AI Provider Backend for Claude Code          ${NC}"
+    echo -e "${BLUE}------------------------------------------------------${NC}"
+    echo "How would you like Claude Code to connect?"
+    echo ""
+    echo -e "  ${GREEN}[1] Official Anthropic Claude (Default / Recommended)${NC}"
+    echo "      - Directly connects to official Anthropic API & Claude Pro/Team."
+    echo "      - Native Claude 3.5 Sonnet / Opus models with standard web login."
+    echo "      - Why choose this: Zero proxy overhead, official Anthropic support."
+    echo ""
+    echo -e "  ${YELLOW}[2] OmniRoute Smart AI Router (Multi-Model Gateway)${NC}"
+    echo "      - Local proxy running on http://localhost:20128/"
+    echo "      - Routes requests to Google Gemini (1M context), OpenAI, DeepSeek, Ollama."
+    echo "      - Why choose this: Use non-Anthropic models or cost-effective third-party keys."
+    echo ""
+
+    if [ -t 0 ]; then
+        read -r -p "Select option [1 for Official, 2 for OmniRoute] (Press Enter for Default [1]): " USER_CHOICE
+    else
+        USER_CHOICE="1"
+    fi
+
+    if [ "$USER_CHOICE" = "2" ]; then
+        BACKEND_MODE="OmniRoute"
+    else
+        BACKEND_MODE="Official"
+    fi
+fi
+
+echo -e "${GREEN}Configuring for backend mode: ${BACKEND_MODE}${NC}"
+echo ""
+
 # ------------------------------------------------------------------------------
 # 1. System packages
 # ------------------------------------------------------------------------------
@@ -127,6 +162,22 @@ mkdir -p "$HOME/.claude/skills"
 mkdir -p "$HOME/.claude/commands"
 
 cp -f "${CONFIGS_DIR}/.claude/settings.json" "$HOME/.claude/settings.json"
+TARGET_SETTINGS="$HOME/.claude/settings.json"
+
+if [ "$BACKEND_MODE" = "OmniRoute" ]; then
+    echo "  -> Injecting OmniRoute multi-model proxy settings into settings.json..."
+    if command -v jq &> /dev/null; then
+        jq '.env.ANTHROPIC_BASE_URL = "http://localhost:20128/" |
+            .env.ANTHROPIC_AUTH_TOKEN = "omniroute" |
+            .env.ANTHROPIC_MODEL = "antigravity/gemini-3.8-flash-high" |
+            .env.ANTHROPIC_DEFAULT_SONNET_MODEL = "antigravity/gemini-3.8-flash-high" |
+            .env.ANTHROPIC_DEFAULT_OPUS_MODEL = "antigravity/gemini-3.8-flash-high" |
+            .env.ANTHROPIC_DEFAULT_HAIKU_MODEL = "kc/dots-studio/dots-3-note-preview:free"' \
+            "$TARGET_SETTINGS" > "${TARGET_SETTINGS}.tmp" && mv "${TARGET_SETTINGS}.tmp" "$TARGET_SETTINGS"
+    fi
+else
+    echo "  -> Configured for Official Anthropic Claude (direct connection)."
+fi
 if [ -f "${CONFIGS_DIR}/.claude/CLAUDE.md" ]; then
     cp -f "${CONFIGS_DIR}/.claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 fi
@@ -192,13 +243,14 @@ done
 # ------------------------------------------------------------------------------
 # 6. Setup OmniRoute Background Service
 # ------------------------------------------------------------------------------
-echo -e "${YELLOW}[6/7] Setting up OmniRoute service...${NC}"
+if [ "$BACKEND_MODE" = "OmniRoute" ]; then
+    echo -e "${YELLOW}[6/7] Setting up OmniRoute service...${NC}"
 
-OMNIROUTE_BIN="$(command -v omniroute 2>/dev/null || echo "$HOME/.npm-global/bin/omniroute")"
+    OMNIROUTE_BIN="$(command -v omniroute 2>/dev/null || echo "$HOME/.npm-global/bin/omniroute")"
 
-if command -v systemctl &> /dev/null && systemctl --user status &> /dev/null; then
-    mkdir -p "$HOME/.config/systemd/user"
-    cat <<EOF > "$HOME/.config/systemd/user/omniroute.service"
+    if command -v systemctl &> /dev/null && systemctl --user status &> /dev/null; then
+        mkdir -p "$HOME/.config/systemd/user"
+        cat <<EOF > "$HOME/.config/systemd/user/omniroute.service"
 [Unit]
 Description=OmniRoute AI Router Service
 After=network.target
@@ -215,14 +267,17 @@ WorkingDirectory=${HOME}
 WantedBy=default.target
 EOF
 
-    systemctl --user daemon-reload
-    systemctl --user enable --now omniroute
-    echo -e "${GREEN}OmniRoute systemd user service enabled and started.${NC}"
+        systemctl --user daemon-reload
+        systemctl --user enable --now omniroute
+        echo -e "${GREEN}OmniRoute systemd user service enabled and started.${NC}"
+    else
+        # Fallback for WSL or non-systemd environments
+        echo "Starting OmniRoute in background..."
+        nohup "${OMNIROUTE_BIN}" serve > "$HOME/.omniroute/server.log" 2>&1 &
+        sleep 2
+    fi
 else
-    # Fallback for WSL or non-systemd environments
-    echo "Starting OmniRoute in background..."
-    nohup "${OMNIROUTE_BIN}" serve > "$HOME/.omniroute/server.log" 2>&1 &
-    sleep 2
+    echo -e "${YELLOW}[6/7] Skipping OmniRoute service setup (Official Claude selected).${NC}"
 fi
 
 # ------------------------------------------------------------------------------
@@ -274,11 +329,13 @@ else
     echo -e "${YELLOW}Not deployed${NC}"
 fi
 
-echo -n "OmniRoute Service (port 20128): "
-if curl -s http://localhost:20128/ > /dev/null 2>&1 || curl -s http://localhost:20128/health > /dev/null 2>&1; then
-    echo -e "${GREEN}Active and responding!${NC}"
-else
-    echo -e "${YELLOW}Starting up... (Check: omniroute status)${NC}"
+if [ "$BACKEND_MODE" = "OmniRoute" ]; then
+    echo -n "OmniRoute Service (port 20128): "
+    if curl -s http://localhost:20128/ > /dev/null 2>&1 || curl -s http://localhost:20128/health > /dev/null 2>&1; then
+        echo -e "${GREEN}Active and responding!${NC}"
+    else
+        echo -e "${YELLOW}Starting up... (Check: omniroute status)${NC}"
+    fi
 fi
 
 echo ""
@@ -289,5 +346,10 @@ echo "You can now open a new terminal (or run 'source ~/.bashrc') and run:"
 echo ""
 echo "    claude"
 echo ""
-echo "Claude Code will launch connected to OmniRoute with all 88 agents,"
-echo "custom skills, and MCP servers ready."
+if [ "$BACKEND_MODE" = "OmniRoute" ]; then
+    echo "Claude Code will launch connected to local OmniRoute on port 20128 with all 88 agents,"
+    echo "custom skills, and MCP servers ready."
+else
+    echo "Claude Code will launch connected directly to Official Anthropic."
+    echo "Log in with your Anthropic subscription or API key."
+fi
