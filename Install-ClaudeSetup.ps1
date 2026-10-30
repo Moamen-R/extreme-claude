@@ -121,8 +121,26 @@ New-Item -ItemType Directory -Path (Join-Path $claudeTarget "commands") -Force |
 Copy-Item -Path (Join-Path $ConfigsDir ".claude\settings.json") -Destination (Join-Path $claudeTarget "settings.json") -Force
 Copy-Item -Path (Join-Path $ConfigsDir ".claude\CLAUDE.md") -Destination (Join-Path $claudeTarget "CLAUDE.md") -Force
 Copy-Item -Path (Join-Path $ConfigsDir ".claude\agents\*") -Destination (Join-Path $claudeTarget "agents\") -Force
-Copy-Item -Path (Join-Path $ConfigsDir ".claude\skills\*") -Destination (Join-Path $claudeTarget "skills\") -Recurse -Force
 Copy-Item -Path (Join-Path $ConfigsDir ".claude\commands\*") -Destination (Join-Path $claudeTarget "commands\") -Recurse -Force
+
+# Install & sync skills directly from live upstream sources (skills.json)
+$skillsManifest = Join-Path $ConfigsDir "skills.json"
+if (Test-Path $skillsManifest) {
+    Write-Host "  -> Installing curated skills from live upstream repositories..." -ForegroundColor Gray
+    try {
+        $skillsList = Get-Content $skillsManifest -Raw | ConvertFrom-Json
+        foreach ($item in $skillsList) {
+            Write-Host "     - Installing $($item.skill) ($($item.package))..." -ForegroundColor DarkGray
+            npx -y skills add $item.package --skill $item.skill --agent claude-code -g -y 2>$null
+        }
+    } catch {
+        Write-Warning "Upstream skills install noticed: $_"
+    }
+}
+# Deploy local/custom skills suite as guaranteed baseline
+if (Test-Path (Join-Path $ConfigsDir ".claude\skills")) {
+    Copy-Item -Path (Join-Path $ConfigsDir ".claude\skills\*") -Destination (Join-Path $claudeTarget "skills\") -Recurse -Force
+}
 
 # Root .claude.json (MCP Servers)
 Copy-Item -Path (Join-Path $ConfigsDir ".claude.json") -Destination (Join-Path $UserProfile ".claude.json") -Force

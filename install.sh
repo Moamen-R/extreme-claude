@@ -133,11 +133,24 @@ fi
 if [ -d "${CONFIGS_DIR}/.claude/agents" ]; then
     cp -rf "${CONFIGS_DIR}/.claude/agents/." "$HOME/.claude/agents/"
 fi
-if [ -d "${CONFIGS_DIR}/.claude/skills" ]; then
-    cp -rf "${CONFIGS_DIR}/.claude/skills/." "$HOME/.claude/skills/"
-fi
 if [ -d "${CONFIGS_DIR}/.claude/commands" ]; then
     cp -rf "${CONFIGS_DIR}/.claude/commands/." "$HOME/.claude/commands/"
+fi
+
+# Install curated skills directly from live upstream sources (skills.json)
+if [ -f "${CONFIGS_DIR}/skills.json" ] && command -v jq &> /dev/null; then
+    echo "Installing curated skills from live upstream repositories..."
+    jq -c '.[]' "${CONFIGS_DIR}/skills.json" | while read -r item; do
+        pkg=$(echo "$item" | jq -r '.package')
+        skill=$(echo "$item" | jq -r '.skill')
+        echo "  -> Installing ${skill} (${pkg})..."
+        npx -y skills add "$pkg" --skill "$skill" --agent claude-code -g -y 2>/dev/null || true
+    done
+fi
+
+# Deploy local/custom skills suite as guaranteed baseline
+if [ -d "${CONFIGS_DIR}/.claude/skills" ]; then
+    cp -rf "${CONFIGS_DIR}/.claude/skills/." "$HOME/.claude/skills/"
 fi
 
 # Root .claude.json (MCP Servers)
@@ -150,9 +163,13 @@ fi
 
 # .omniroute
 mkdir -p "$HOME/.omniroute"
-cp -f "${CONFIGS_DIR}/.omniroute/.env" "$HOME/.omniroute/.env"
-cp -f "${CONFIGS_DIR}/.omniroute/storage.sqlite" "$HOME/.omniroute/storage.sqlite"
-chmod 600 "$HOME/.omniroute/.env"
+if [ -f "${CONFIGS_DIR}/.omniroute/.env" ]; then
+    cp -f "${CONFIGS_DIR}/.omniroute/.env" "$HOME/.omniroute/.env"
+    chmod 600 "$HOME/.omniroute/.env"
+fi
+if [ -f "${CONFIGS_DIR}/.omniroute/storage.sqlite" ]; then
+    cp -f "${CONFIGS_DIR}/.omniroute/storage.sqlite" "$HOME/.omniroute/storage.sqlite"
+fi
 
 # .serena
 mkdir -p "$HOME/.serena"

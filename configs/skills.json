@@ -1,0 +1,20 @@
+[
+  { "package": "mattpocock/skills", "skill": "grill-with-docs", "description": "Challenge and refine technical plans against official docs" },
+  { "package": "mattpocock/skills", "skill": "improve-codebase-architecture", "description": "Architectural analysis and dependency refactoring" },
+  { "package": "mattpocock/skills", "skill": "setup-matt-pocock-skills", "description": "Bootstrap Matt Pocock engineering skill suite" },
+  { "package": "mattpocock/skills", "skill": "code-review", "description": "Standards and spec-based code reviewer" },
+  { "package": "mattpocock/skills", "skill": "wayfinder", "description": "Deconstruct large milestones into decision tickets" },
+  { "package": "mattpocock/skills", "skill": "git-guardrails-claude-code", "description": "Defensive git safety hooks preventing destructive commands" },
+  { "package": "mattpocock/skills", "skill": "writing-for-agents", "description": "Writing clear, high-signal documentation for AI agents" },
+  { "package": "mattpocock/skills", "skill": "triage", "description": "Scope-boundary triage and out-of-scope management" },
+  { "package": "vercel-labs/agent-browser", "skill": "agent-browser", "description": "Headless and GUI browser automation CLI for AI agents" },
+  { "package": "vercel-labs/agent-skills", "skill": "vercel-react-best-practices", "description": "React and Next.js performance optimization patterns" },
+  { "package": "vercel-labs/agent-skills", "skill": "find-skills", "description": "Discover and install agent skills from skills.sh" },
+  { "package": "leonxlnx/taste-skill", "skill": "design-taste-frontend", "description": "Anti-slop frontend art direction, palettes and layout engine" },
+  { "package": "juliusbrussee/caveman", "skill": "caveman", "description": "Terse high-density output minimizing token usage" },
+  { "package": "addyosmani/web-quality-skills", "skill": "accessibility", "description": "WCAG 2.2 accessibility auditor and remediation guide" },
+  { "package": "addyosmani/web-quality-skills", "skill": "core-web-vitals", "description": "LCP, INP, and CLS performance tuning" },
+  { "package": "addyosmani/web-quality-skills", "skill": "performance", "description": "Web speed and runtime performance optimization" },
+  { "package": "addyosmani/web-quality-skills", "skill": "seo", "description": "Search engine visibility and structured metadata" },
+  { "package": "addyosmani/web-quality-skills", "skill": "web-quality-audit", "description": "Full evidence-led web quality audit" }
+]

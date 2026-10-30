@@ -1,0 +1,50 @@
+name: Release and Package Distribution
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    name: Create GitHub Release & Publish Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@moamen-r'
+
+      - name: Create Release Bundles
+        run: |
+          zip -r extreme-claude-windows.zip . -x "*.git*" "configs/.omniroute/*.sqlite" "configs/.claude-mem/*"
+          tar -czf extreme-claude-linux.tar.gz --exclude=".git" --exclude="configs/.omniroute/*.sqlite" --exclude="configs/.claude-mem" .
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: Extreme Claude ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            extreme-claude-windows.zip
+            extreme-claude-linux.tar.gz
+
+      - name: Publish to GitHub Packages
+        run: |
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true

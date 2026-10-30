@@ -1,0 +1,39 @@
+{
+  "name": "@moamen-r/extreme-claude",
+  "version": "1.0.0",
+  "description": "Turnkey 1-click cross-platform installer for Claude Code & full AI engineering ecosystem",
+  "main": "bin/index.js",
+  "bin": {
+    "extreme-claude": "bin/index.js"
+  },
+  "scripts": {
+    "start": "node bin/index.js",
+    "install:windows": "powershell -NoProfile -ExecutionPolicy Bypass -File ./Install-ClaudeSetup.ps1",
+    "install:linux": "bash ./install.sh",
+    "update:skills": "npx -y skills update -g -y"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moamen-R/extreme-claude.git"
+  },
+  "keywords": [
+    "claude-code",
+    "anthropic",
+    "ai-agents",
+    "omniroute",
+    "serena",
+    "scrapling",
+    "graphify",
+    "skills",
+    "mcp",
+    "cli"
+  ],
+  "author": "Mo'men Refaey <moamen.refaey.dev@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

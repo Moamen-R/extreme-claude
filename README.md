@@ -32,6 +32,16 @@ Fully merged and cross-platform compatible for **Windows 10 / 11** and **Ubuntu 
 
 ## 🚀 Quick Installation (1-Click)
 
+### ⚡ Universal 1-Line NPX Launcher (Windows & Linux)
+Run without manual cloning or setup:
+```bash
+npx @moamen-r/extreme-claude
+```
+- **Update all global skills**: `npx @moamen-r/extreme-claude update`
+- **Re-sync live skills from upstream**: `npx @moamen-r/extreme-claude skills`
+
+---
+
 ### 🪟 Windows Setup
 
 #### Option 1: 1-Click Batch Launcher
