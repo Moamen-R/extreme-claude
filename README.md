@@ -16,7 +16,8 @@ All personal credentials, private tokens, API keys, and session histories have b
 2. **88 Custom Specialist Agents (`~/.claude/agents/`)**:
    - Ready-to-use domain agents across Frontend, Backend Architecture, Security, Penetration Testing, Database Optimization, Code Review, Systems Programming, Accessibility, and AI/ML pipelines.
 
-3. **Persistent Memory & Web Intelligence MCPs**:
+3. **Persistent Memory, Skills Suite & Web Intelligence MCPs**:
+   - **Curated Global Skills Suite (`~/.claude/skills/`)**: Includes `agent-browser`, `caveman`, `code-review`, `design-taste-frontend`, `redesign-existing-projects`, `resolving-merge-conflicts`, `git-guardrails-claude-code`, `grill-with-docs`, `improve-codebase-architecture`, `setup-matt-pocock-skills`, `triage`, `wayfinder`, `writing-for-agents`, `scrapling-official`, and `agent-reach`.
    - **Claude-Mem**: Cross-session persistent memory compression engine, session lifecycle hooks, and progressive disclosure search MCP (`claude-mem mcp`).
    - **Scrapling**: Stealth browser & adaptive web scraping framework with Cloudflare Turnstile bypass, anti-bot circumvention, `scrapling-mcp` stdio MCP server, and official agent skill.
    - **Agent Reach**: Multi-platform internet intelligence router covering 16 platforms (Twitter/X, Reddit, Bilibili, Xiaohongshu, YouTube, GitHub, LinkedIn, V2EX, RSS, Web Reader, and more).

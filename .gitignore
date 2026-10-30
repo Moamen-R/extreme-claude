@@ -12,3 +12,6 @@
 /receipts
 .omc
 /omc
+/.claude
+/.agents
+/skills-lock.json

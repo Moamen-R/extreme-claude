@@ -87,6 +87,7 @@ $npmPackages = @(
     "opencode-ai",
     "ruflo",
     "@alibaba-group/open-code-review",
+    "skills",
     "mcporter",
     "@playwright/cli",
     "pnpm",
@@ -154,14 +155,15 @@ Write-Host "  Installation Completed Successfully!                   " -Foregrou
 Write-Host "==========================================================" -ForegroundColor Green
 Write-Host ""
 Write-Host "Everything is installed:" -ForegroundColor Cyan
-Write-Host "  ✓ Claude Code CLI (@anthropic-ai/claude-code)" -ForegroundColor White
-Write-Host "  ✓ 88 Custom Specialist Agents in ~/.claude/agents" -ForegroundColor White
-Write-Host "  ✓ 17 Marketplaces and 174 Plugins configured" -ForegroundColor White
-Write-Host "  ✓ OmniRoute Smart AI Router CLI" -ForegroundColor White
-Write-Host "  ✓ Serena Code Intelligence MCP & Graphify" -ForegroundColor White
-Write-Host "  ✓ Claude-Mem Persistent Memory & MCP" -ForegroundColor White
-Write-Host "  ✓ Scrapling Stealth Web Scraping & MCP (scrapling-mcp)" -ForegroundColor White
-Write-Host "  ✓ Agent Reach Multi-Platform Intelligence Router" -ForegroundColor White
+Write-Host '  [+] Claude Code CLI (@anthropic-ai/claude-code)' -ForegroundColor White
+Write-Host '  [+] 88 Custom Specialist Agents in ~/.claude/agents' -ForegroundColor White
+Write-Host '  [+] 17 Marketplaces and 174 Plugins configured' -ForegroundColor White
+Write-Host '  [+] OmniRoute Smart AI Router CLI' -ForegroundColor White
+Write-Host '  [+] Serena Code Intelligence MCP & Graphify' -ForegroundColor White
+Write-Host '  [+] Claude-Mem Persistent Memory & MCP' -ForegroundColor White
+Write-Host '  [+] Scrapling Stealth Web Scraping & MCP (scrapling-mcp)' -ForegroundColor White
+Write-Host '  [+] Agent Reach Multi-Platform Intelligence Router' -ForegroundColor White
+Write-Host '  [+] Curated Skills Suite (Agent Browser, Caveman, Taste, Wayfinder, Triage, etc.)' -ForegroundColor White
 Write-Host ""
 Write-Host "Next Steps:" -ForegroundColor Yellow
 Write-Host "1. Open a new PowerShell terminal so updated PATH takes effect." -ForegroundColor White
