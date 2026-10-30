@@ -1,0 +1,381 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://localhost:20128/",
+    "ANTHROPIC_AUTH_TOKEN": "omniroute",
+    "ANTHROPIC_MODEL": "antigravity/gemini-3.8-flash-high",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "antigravity/gemini-3.8-flash-high",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "antigravity/gemini-3.8-flash-high",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "kc/dots-studio/dots-3-note-preview:free",
+    "CLAUDE_CODE_MAX_CONTEXT_TOKENS": "1048576",
+    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "1000000",
+    "CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT": "1",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "95"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "timeout": 10,
+            "command": "graphify hook-guard search",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash|Grep"
+      },
+      {
+        "hooks": [
+          {
+            "timeout": 10,
+            "command": "graphify hook-guard read",
+            "type": "command"
+          }
+        ],
+        "matcher": "Read|Glob"
+      }
+    ]
+  },
+  "extraKnownMarketplaces": {
+    "open-code-review": {
+      "source": {
+        "source": "github",
+        "repo": "alibaba/open-code-review"
+      },
+      "autoUpdate": true
+    },
+    "superpowers-dev": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers"
+      },
+      "autoUpdate": true
+    },
+    "ui-ux-pro-max-skill": {
+      "source": {
+        "source": "github",
+        "repo": "nextlevelbuilder/ui-ux-pro-max-skill"
+      },
+      "autoUpdate": true
+    },
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
+    },
+    "payload-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "payloadcms/payload"
+      },
+      "autoUpdate": true
+    },
+    "claude-code-workflows": {
+      "source": {
+        "source": "github",
+        "repo": "wshobson/agents"
+      },
+      "autoUpdate": true
+    },
+    "agent-browser": {
+      "source": {
+        "source": "github",
+        "repo": "vercel-labs/agent-browser"
+      },
+      "autoUpdate": true
+    },
+    "omc": {
+      "source": {
+        "source": "github",
+        "repo": "Yeachan-Heo/oh-my-claudecode"
+      },
+      "autoUpdate": true
+    },
+    "planning-with-files": {
+      "source": {
+        "source": "github",
+        "repo": "OthmanAdi/planning-with-files"
+      },
+      "autoUpdate": true
+    },
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      },
+      "autoUpdate": true
+    },
+    "voltagent-subagents": {
+      "source": {
+        "source": "github",
+        "repo": "VoltAgent/awesome-claude-code-subagents"
+      },
+      "autoUpdate": true
+    },
+    "supabase-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "supabase/agent-skills"
+      },
+      "autoUpdate": true
+    },
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
+      },
+      "autoUpdate": true
+    },
+    "context7-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "upstash/context7"
+      },
+      "autoUpdate": true
+    },
+    "ruflo": {
+      "source": {
+        "source": "github",
+        "repo": "ruvnet/ruflo"
+      },
+      "autoUpdate": true
+    },
+    "context-engineering-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "muratcankoylan/Agent-Skills-for-Context-Engineering"
+      },
+      "autoUpdate": true
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      },
+      "autoUpdate": true
+    }
+  },
+  "autoMode": {
+    "environment": [
+      "### Org-wide",
+      "- **Organization**: None configured",
+      "- **Cloud provider(s)**: None configured",
+      "- **Repository visibility**: assume private unless the remote host and repo name indicate otherwise, or a visibility check in the transcript shows public. A meta line reading \"visibility\":\"unverified\" means org policy barred the harness from checking that repo's visibility — treat it as possibly public: scope what is OK to commit or push there as for a public repo, and Out-of-Place Publication below applies to it as to a known-public destination",
+      "- **Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "- **Secrets management**: None configured",
+      "- **Default / protected branches**: None configured",
+      "- **CI/CD deploy targets**: None configured",
+      "- **Network posture**: None configured",
+      "- **Host containment**: None configured — assume Claude Code runs on an ordinary developer machine or CI runner with open internet; if it runs inside a container/VM/pod with an egress allow-list, no network, or neighbours it must not touch, say so here (network setting and allowed hosts, whether the cloud metadata endpoint is meant to be reachable, which cloud project/cluster/registry the task operates and as what identity). Whatever is configured, instance-metadata credential paths and node/cluster credentials of the hosting layer are never task credentials unless this entry says the agent operates that identity (see Containment Escape). The classifier sees commands, not their output, so a declared-sealed box that is actually open cannot be caught here — enforce that in network configuration.",
+      "- **Source control**: The trusted repo and its remote(s) only (no additional orgs configured) — as scoped by the Trusted repo and Repository visibility entries above",
+      "- **Trusted internal domains**: None configured",
+      "- **Trusted cloud buckets**: None configured",
+      "- **Key internal services**: None configured",
+      "- **Internal package registry**: None configured",
+      "- **Sensitive data locations & audiences**: any file or store holding personal data, confidential business data, credentials, regulated data, or similarly sensitive material; preserve exact handles when known and share only with audiences cleared at the [named+specifics] bar",
+      "- **Data retention / declassification**: None configured",
+      "- **Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment (hyphen/underscore/dot-delimited — e.g. matches `prod-db`, not `producer`)",
+      "- **Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
+      "- **Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
+      "### User-specific",
+      "- **Primary use of Claude Code**: software development",
+      "- **Trusted repo**: D:\\Projects\\PixaTech (no remotes configured)",
+      "- **Org-specific CLIs**: None configured"
+    ]
+  },
+  "autoCompactWindow": 1000000,
+  "modelSettings": {
+    "antigravity/gemini-3.8-flash-tiered": {
+      "effortLevel": "high"
+    },
+    "antigravity/gemini-3.8-flash-high": {
+      "effortLevel": "high"
+    }
+  },
+  "pluginConfigs": {
+    "ponytail@ponytail": {
+      "options": {
+        "ledger": true,
+        "sendNames": true
+      }
+    }
+  },
+  "enabledPlugins": {
+    "open-code-review@open-code-review": true,
+    "superpowers@superpowers-dev": true,
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true,
+    "claude-mem@thedotmack": false,
+    "payload@payload-marketplace": true,
+    "oh-my-claudecode@omc": true,
+    "planning-with-files@planning-with-files": true,
+    "impeccable@impeccable": true,
+    "supabase@supabase-agent-skills": true,
+    "postgres-best-practices@supabase-agent-skills": true,
+    "warp@claude-code-warp": true,
+    "claude-mem-cowork@thedotmack": true,
+    "accessibility-compliance@claude-code-workflows": true,
+    "agent-orchestration@claude-code-workflows": true,
+    "agent-teams@claude-code-workflows": true,
+    "api-scaffolding@claude-code-workflows": true,
+    "api-testing-observability@claude-code-workflows": true,
+    "application-performance@claude-code-workflows": true,
+    "arm-cortex-microcontrollers@claude-code-workflows": true,
+    "avoid-ai-writing@claude-code-workflows": true,
+    "backend-api-security@claude-code-workflows": true,
+    "backend-development@claude-code-workflows": true,
+    "before-you-build@claude-code-workflows": true,
+    "block-no-verify@claude-code-workflows": true,
+    "blockchain-web3@claude-code-workflows": true,
+    "brand-landingpage@claude-code-workflows": true,
+    "business-analytics@claude-code-workflows": true,
+    "c4-architecture@claude-code-workflows": true,
+    "cicd-automation@claude-code-workflows": true,
+    "code-documentation@claude-code-workflows": true,
+    "code-refactoring@claude-code-workflows": true,
+    "codebase-cleanup@claude-code-workflows": true,
+    "comprehensive-review@claude-code-workflows": true,
+    "conductor@claude-code-workflows": true,
+    "content-marketing@claude-code-workflows": true,
+    "context-management@claude-code-workflows": true,
+    "customer-sales-automation@claude-code-workflows": true,
+    "data-engineering@claude-code-workflows": true,
+    "data-validation-suite@claude-code-workflows": true,
+    "database-cloud-optimization@claude-code-workflows": true,
+    "database-design@claude-code-workflows": true,
+    "database-migrations@claude-code-workflows": true,
+    "debugging-toolkit@claude-code-workflows": true,
+    "dependency-management@claude-code-workflows": true,
+    "deployment-strategies@claude-code-workflows": true,
+    "deployment-validation@claude-code-workflows": true,
+    "developer-essentials@claude-code-workflows": true,
+    "dgx-spark-ops@claude-code-workflows": true,
+    "distributed-debugging@claude-code-workflows": true,
+    "documentation-generation@claude-code-workflows": true,
+    "documentation-standards@claude-code-workflows": true,
+    "dotnet-contribution@claude-code-workflows": true,
+    "error-debugging@claude-code-workflows": true,
+    "error-diagnostics@claude-code-workflows": true,
+    "file-conversion@claude-code-workflows": true,
+    "framework-migration@claude-code-workflows": true,
+    "frontend-mobile-development@claude-code-workflows": true,
+    "frontend-mobile-security@claude-code-workflows": true,
+    "full-stack-orchestration@claude-code-workflows": true,
+    "functional-programming@claude-code-workflows": true,
+    "game-development@claude-code-workflows": true,
+    "git-pr-workflows@claude-code-workflows": true,
+    "hermes-tweet@claude-code-workflows": true,
+    "hol-guard@claude-code-workflows": true,
+    "hr-legal-compliance@claude-code-workflows": true,
+    "incident-response@claude-code-workflows": true,
+    "javascript-typescript@claude-code-workflows": true,
+    "julia-development@claude-code-workflows": true,
+    "jvm-languages@claude-code-workflows": true,
+    "kubernetes-operations@claude-code-workflows": true,
+    "llm-application-dev@claude-code-workflows": true,
+    "llm-finetuning@claude-code-workflows": true,
+    "machine-learning-ops@claude-code-workflows": true,
+    "meigen-ai-design@claude-code-workflows": true,
+    "multi-platform-apps@claude-code-workflows": true,
+    "observability-monitoring@claude-code-workflows": true,
+    "operating-kit@claude-code-workflows": true,
+    "payment-processing@claude-code-workflows": true,
+    "pensyve@claude-code-workflows": true,
+    "performance-testing-review@claude-code-workflows": true,
+    "plugin-eval@claude-code-workflows": true,
+    "pptx-deck-creation@claude-code-workflows": true,
+    "protect-mcp@claude-code-workflows": true,
+    "python-development@claude-code-workflows": true,
+    "quantitative-trading@claude-code-workflows": true,
+    "reverse-engineering@claude-code-workflows": true,
+    "review-agent-governance@claude-code-workflows": true,
+    "security-compliance@claude-code-workflows": true,
+    "security-scanning@claude-code-workflows": true,
+    "seo-analysis-monitoring@claude-code-workflows": true,
+    "seo-content-creation@claude-code-workflows": true,
+    "seo-technical-optimization@claude-code-workflows": true,
+    "shell-scripting@claude-code-workflows": true,
+    "ship-mate@claude-code-workflows": true,
+    "signed-audit-trails@claude-code-workflows": true,
+    "skill-forge-essentials@claude-code-workflows": true,
+    "social-publishing@claude-code-workflows": true,
+    "startup-business-analyst@claude-code-workflows": true,
+    "superself@claude-code-workflows": true,
+    "systems-programming@claude-code-workflows": true,
+    "tdd-workflows@claude-code-workflows": true,
+    "team-collaboration@claude-code-workflows": true,
+    "ui-design@claude-code-workflows": true,
+    "unit-testing@claude-code-workflows": true,
+    "web-scripting@claude-code-workflows": true,
+    "voltagent-biz@voltagent-subagents": true,
+    "voltagent-core-dev@voltagent-subagents": true,
+    "voltagent-data-ai@voltagent-subagents": true,
+    "voltagent-dev-exp@voltagent-subagents": true,
+    "voltagent-domains@voltagent-subagents": true,
+    "voltagent-infra@voltagent-subagents": true,
+    "voltagent-lang@voltagent-subagents": true,
+    "voltagent-meta@voltagent-subagents": true,
+    "voltagent-qa-sec@voltagent-subagents": true,
+    "voltagent-research@voltagent-subagents": true,
+    "ruflo-adr@ruflo": true,
+    "ruflo-agent@ruflo": true,
+    "ruflo-agentdb@ruflo": true,
+    "ruflo-agntcy@ruflo": true,
+    "ruflo-ai-team@ruflo": true,
+    "ruflo-aidefence@ruflo": true,
+    "ruflo-arena@ruflo": true,
+    "ruflo-autopilot@ruflo": true,
+    "ruflo-bbs-federation@ruflo": true,
+    "ruflo-browser@ruflo": true,
+    "ruflo-business-pods@ruflo": true,
+    "ruflo-console@ruflo": true,
+    "ruflo-core@ruflo": true,
+    "ruflo-cost-tracker@ruflo": true,
+    "ruflo-daa@ruflo": true,
+    "ruflo-ddd@ruflo": true,
+    "ruflo-deepseek-harness@ruflo": true,
+    "ruflo-docs@ruflo": true,
+    "ruflo-federation@ruflo": true,
+    "ruflo-goals@ruflo": true,
+    "ruflo-graph-intelligence@ruflo": true,
+    "ruflo-intelligence@ruflo": true,
+    "ruflo-iot-cognitum@ruflo": true,
+    "ruflo-jujutsu@ruflo": true,
+    "ruflo-knowledge-graph@ruflo": true,
+    "ruflo-loop-workers@ruflo": true,
+    "ruflo-market-data@ruflo": true,
+    "ruflo-metaharness@ruflo": true,
+    "ruflo-migrations@ruflo": true,
+    "ruflo-mods@ruflo": true,
+    "ruflo-music@ruflo": true,
+    "ruflo-neural-trader@ruflo": true,
+    "ruflo-observability@ruflo": true,
+    "ruflo-plugin-creator@ruflo": true,
+    "ruflo-rag-memory@ruflo": true,
+    "ruflo-ruos@ruflo": true,
+    "ruflo-ruvector@ruflo": true,
+    "ruflo-ruvllm@ruflo": true,
+    "ruflo-rvf@ruflo": true,
+    "ruflo-security-audit@ruflo": true,
+    "ruflo-sparc@ruflo": true,
+    "ruflo-swarm@ruflo": true,
+    "ruflo-testgen@ruflo": true,
+    "ruflo-workflows@ruflo": true,
+    "ruflo-x-gateway@ruflo": true,
+    "code-review@anthropic-plugin-directory": true,
+    "skill-creator@anthropic-plugin-directory": true,
+    "code-simplifier@anthropic-plugin-directory": true,
+    "playwright@anthropic-plugin-directory": true,
+    "claude-md-management@anthropic-plugin-directory": true,
+    "feature-dev@anthropic-plugin-directory": true,
+    "security-guidance@anthropic-plugin-directory": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "claude-code-setup@anthropic-plugin-directory": true,
+    "ralph-loop@anthropic-plugin-directory": true,
+    "commit-commands@anthropic-plugin-directory": true,
+    "pr-review-toolkit@anthropic-plugin-directory": true,
+    "chrome-devtools-mcp@claude-plugins-official": true,
+    "ponytail@ponytail": true
+  },
+  "theme": "dark",
+  "model": "antigravity/gemini-3.8-flash-high"
+}

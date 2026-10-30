@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "ChatPRD": {
+      "url": "https://app.chatprd.ai/mcp",
+      "type": "http"
+    },
+    "serena": {
+      "env": {},
+      "type": "stdio",
+      "args": [
+        "start-mcp-server",
+        "--context=claude-code",
+        "--project-from-cwd"
+      ],
+      "command": "serena"
+    }
+  },
+  "hasSeenTasksHint": true,
+  "installMethod": "global"
+}
