@@ -38,11 +38,19 @@ if (-not $nodeCmd) {
 # 2. Check Python / Astral uv
 # ------------------------------------------------------------------------------
 Write-Host "[2/6] Checking Python 'uv' toolchain..." -ForegroundColor Yellow
+$localBin = Join-Path $UserProfile ".local\bin"
+$cargoBin = Join-Path $UserProfile ".cargo\bin"
 $uvCmd = Get-Command uv -ErrorAction SilentlyContinue
 if (-not $uvCmd) {
     Write-Host "Installing Astral 'uv' package installer..." -ForegroundColor Yellow
-    powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://astral.sh/uv/install.ps1 | iex"
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+}
+if ($env:Path -notlike "*$localBin*") {
+    $env:Path = "$localBin;" + $env:Path
+}
+if ($env:Path -notlike "*$cargoBin*") {
+    $env:Path = "$cargoBin;" + $env:Path
 }
 
 # ------------------------------------------------------------------------------

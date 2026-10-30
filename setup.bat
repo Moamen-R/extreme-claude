@@ -1,8 +1,8 @@
 @echo off
-title Claude Code & AI Ecosystem Setup
+title Claude Code and AI Ecosystem Setup
 echo ========================================================
-echo   Launching Claude Code & AI Ecosystem Installer...
+echo   Launching Claude Code and AI Ecosystem Installer...
 echo ========================================================
-powershell -NoProfile -ExecutionPolicy RemoteSigned -File "%~dp0Install-ClaudeSetup.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0Install-ClaudeSetup.ps1"
 echo.
 pause

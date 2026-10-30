@@ -39,7 +39,7 @@ All personal credentials, private tokens, API keys, and session histories have b
 Right-click `setup.bat` and select **Run as Administrator** (or double-click to run), **OR** open PowerShell in this directory and run:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy RemoteSigned -File .\Install-ClaudeSetup.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\Install-ClaudeSetup.ps1
 ```
 
 The script will automatically:
