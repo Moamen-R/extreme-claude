@@ -1,5 +1,11 @@
 # Claude Code & Multi-Agent AI Ecosystem (Universal Windows & Linux Setup)
 
+[![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/Moamen-R/extreme-claude?include_prereleases&color=brightgreen)](https://github.com/Moamen-R/extreme-claude/releases)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Ubuntu%20Linux-lightgrey.svg)](#-quick-installation-1-click)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-v2.1.314+-purple.svg)](https://claude.com/claude-code)
+[![GitHub Packages](https://img.shields.io/badge/npm%20package-@moamen--r/extreme--claude-orange.svg)](https://github.com/Moamen-R/extreme-claude/packages)
+
 A turnkey, sanitized starter pack to install and configure **Claude Code** alongside a complete AI engineering toolchain (**OmniRoute**, **Serena MCP**, **Graphify**, **Claude-Mem**, **Scrapling**, **Agent Reach**, **OpenCode**, **88 Custom Specialist Agents**, **27+ Global Skills**, and **174 Community Plugins**).
 
 Fully merged and cross-platform compatible for **Windows 10 / 11** and **Ubuntu Linux** with zero conflicts.
@@ -17,7 +23,7 @@ Fully merged and cross-platform compatible for **Windows 10 / 11** and **Ubuntu 
    - Ready-to-use domain agents across Frontend, Backend Architecture, Security, Penetration Testing, Database Optimization, Code Review, Systems Programming, Accessibility, and AI/ML pipelines.
 
 3. **Persistent Memory, Skills Suite & Web Intelligence MCPs**:
-   - **Curated Global Skills Suite (`~/.claude/skills/`)**: Includes `agent-browser`, `caveman`, `code-review`, `design-taste-frontend`, `redesign-existing-projects`, `resolving-merge-conflicts`, `git-guardrails-claude-code`, `grill-with-docs`, `improve-codebase-architecture`, `setup-matt-pocock-skills`, `triage`, `wayfinder`, `writing-for-agents`, `scrapling-official`, `agent-reach`, and more.
+   - **Curated Global Skills Suite (`~/.claude/skills/`)**: Pre-configured with live upstream tracking for 27+ skills (`agent-browser`, `caveman`, `code-review`, `design-taste-frontend`, `redesign-existing-projects`, `resolving-merge-conflicts`, `git-guardrails-claude-code`, `grill-with-docs`, `improve-codebase-architecture`, `setup-matt-pocock-skills`, `triage`, `wayfinder`, `writing-for-agents`, `scrapling-official`, `agent-reach`, and more).
    - **Claude-Mem**: Cross-session persistent memory compression engine, session lifecycle hooks, and progressive disclosure search MCP (`claude-mem mcp`).
    - **Scrapling**: Stealth browser & adaptive web scraping framework with Cloudflare Turnstile bypass, anti-bot circumvention, `scrapling-mcp` stdio MCP server, and official agent skill.
    - **Agent Reach**: Multi-platform internet intelligence router covering 16 platforms (Twitter/X, Reddit, Bilibili, Xiaohongshu, YouTube, GitHub, LinkedIn, V2EX, RSS, Web Reader, and more).
@@ -32,28 +38,47 @@ Fully merged and cross-platform compatible for **Windows 10 / 11** and **Ubuntu 
 
 ## 🚀 Quick Installation (1-Click)
 
-### ⚡ Universal 1-Line NPX Launcher (Windows & Linux)
-Run without manual cloning or setup:
+### 📦 Option A: Install via GitHub Packages / NPX (Fastest)
+
+Run directly from any terminal without manual cloning:
+
 ```bash
+# Configure npm scope for GitHub Packages (run once)
+npm config set @moamen-r:registry https://npm.pkg.github.com
+
+# 1-Click Launch (auto-detects Windows vs. Linux)
 npx @moamen-r/extreme-claude
 ```
-- **Update all global skills**: `npx @moamen-r/extreme-claude update`
-- **Re-sync live skills from upstream**: `npx @moamen-r/extreme-claude skills`
+
+You can also install the CLI globally:
+```bash
+npm install -g @moamen-r/extreme-claude
+extreme-claude
+```
+
+#### CLI Management Commands:
+```bash
+# Update all installed global skills to latest upstream versions
+extreme-claude update
+
+# Re-sync / install all curated skills from live upstream repositories
+extreme-claude skills
+```
 
 ---
 
-### 🪟 Windows Setup
+### 🪟 Option B: Windows Local Setup
 
-#### Option 1: 1-Click Batch Launcher
+#### Method 1: 1-Click Batch Launcher
 Double-click `setup.bat` (or right-click and select **Run as Administrator**).
 
-#### Option 2: PowerShell
-Open PowerShell in this directory and run:
+#### Method 2: PowerShell
+Open PowerShell in this repository directory and run:
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\Install-ClaudeSetup.ps1
 ```
 
-The installer will:
+The script will automatically:
 1. Verify / install Node.js (v22 LTS) and Astral `uv`.
 2. Install `serena-agent`, `graphifyy`, and `scrapling[ai]` via `uv`.
 3. Install `@anthropic-ai/claude-code`, `omniroute`, `claude-mem`, `skills`, and ecosystem CLIs via `npm`.
@@ -61,9 +86,8 @@ The installer will:
 
 ---
 
-### 🐧 Ubuntu Linux Setup
+### 🐧 Option C: Ubuntu Linux Local Setup
 
-#### 1-Click Bash Installer
 In a terminal inside this directory, run:
 ```bash
 chmod +x install.sh
@@ -71,13 +95,46 @@ chmod +x install.sh
 ```
 *(Or run `./setup.sh`)*
 
-The Linux installer will:
+The Linux installer will automatically:
 1. Install base build dependencies (`curl`, `git`, `build-essential`, `python3`, `sqlite3`, etc.).
 2. Install Node.js 22 LTS via NodeSource.
 3. Install Astral `uv`, `serena-agent`, `graphifyy`, and `scrapling[ai]`.
 4. Install `@anthropic-ai/claude-code`, `omniroute`, `claude-mem`, `skills`, and CLIs globally.
 5. Deploy all configurations, agents, skills, and MCP definitions to `$HOME/.claude`.
 6. Configure OmniRoute as an automated `systemd` user service running on port 20128.
+
+---
+
+## 🧰 Curated Global Skills Suite
+
+All skills are installed at global user scope (`~/.claude/skills/`) and tracked via `configs/skills.json`:
+
+| Skill | Upstream Repository Source | Description |
+| :--- | :--- | :--- |
+| **`grill-with-docs`** | `mattpocock/skills` | Challenge and refine technical plans against official docs |
+| **`improve-codebase-architecture`** | `mattpocock/skills` | Architectural analysis and dependency refactoring |
+| **`setup-matt-pocock-skills`** | `mattpocock/skills` | Bootstrap Matt Pocock engineering skill suite |
+| **`code-review`** | `mattpocock/skills` | Standards and spec-based code reviewer |
+| **`wayfinder`** | `mattpocock/skills` | Deconstruct large milestones into decision tickets |
+| **`git-guardrails-claude-code`** | `mattpocock/skills` | Defensive git safety hooks preventing destructive commands |
+| **`writing-for-agents`** | `mattpocock/skills` | Writing clear, high-signal documentation for AI agents |
+| **`triage`** | `mattpocock/skills` | Scope-boundary triage and out-of-scope management |
+| **`agent-browser`** | `vercel-labs/agent-browser` | Headless & GUI browser automation CLI for AI agents |
+| **`vercel-react-best-practices`** | `vercel-labs/agent-skills` | React 19 and Next.js 15 performance optimization patterns |
+| **`find-skills`** | `vercel-labs/agent-skills` | Discover and install agent skills from skills.sh |
+| **`design-taste-frontend`** | `leonxlnx/taste-skill` | Anti-slop frontend art direction, palettes and layout engine |
+| **`redesign-existing-projects`** | `leonxlnx/taste-skill` | Targeted redesign workflow for existing interfaces |
+| **`caveman`** | `juliusbrussee/caveman` | Terse high-density output minimizing token usage |
+| **`resolving-merge-conflicts`** | `mattpocock/skills` | Structured git merge and rebase conflict resolution |
+| **`accessibility`** | `addyosmani/web-quality-skills` | WCAG 2.2 accessibility auditor and remediation guide |
+| **`core-web-vitals`** | `addyosmani/web-quality-skills` | LCP, INP, and CLS performance tuning |
+| **`performance`** | `addyosmani/web-quality-skills` | Web speed and runtime performance optimization |
+| **`seo`** | `addyosmani/web-quality-skills` | Search engine visibility and structured metadata |
+| **`web-quality-audit`** | `addyosmani/web-quality-skills` | Full evidence-led web quality audit |
+| **`scrapling-official`** | `D4Vinci/Scrapling` | Cloudflare Turnstile bypass and stealth scraping |
+| **`agent-reach`** | `agent-reach/agent-reach` | Multi-platform internet intelligence router |
+| **`graphify`** | `graphify-ai/graphify` | Persistent AST codebase knowledge graph indexing |
+| **`open-code-review`** | `alibaba/open-code-review` | Diff-based AI code review and fix engine |
 
 ---
 
@@ -90,7 +147,7 @@ If you have an Anthropic Claude Pro/Team subscription or an Anthropic API Key:
 1. Open `~/.claude/settings.json` in any text editor.
 2. In the `"env"` section, remove or comment out `"ANTHROPIC_BASE_URL"` and `"ANTHROPIC_AUTH_TOKEN"`.
 3. Open a new terminal and run:
-   ```powershell
+   ```bash
    claude
    ```
 4. Follow the prompt to log in via browser.
@@ -98,18 +155,19 @@ If you have an Anthropic Claude Pro/Team subscription or an Anthropic API Key:
 ---
 
 ### Mode B: OmniRoute Multi-Model Routing (Recommended)
-If you want to use OmniRoute to route to Gemini, DeepSeek, OpenAI, or multiple providers:
-1. Open PowerShell and start the OmniRoute background router:
-   ```powershell
+If you want to use OmniRoute to route across Gemini, DeepSeek, OpenAI, or local models:
+1. Open a terminal and start the OmniRoute background router:
+   ```bash
    omniroute serve
    ```
+   *(On Ubuntu, OmniRoute starts automatically as a systemd user service).*
 2. Open your browser to `http://localhost:20128/` to access the OmniRoute Dashboard.
 3. Go to **Providers**, select the AI providers you use (Google Gemini, OpenAI, OpenRouter, DeepSeek, etc.), and paste your API keys.
 4. In another terminal window, run:
-   ```powershell
+   ```bash
    claude
    ```
-   Claude Code will automatically connect to your local OmniRoute on port 20128 using your models!
+   Claude Code will automatically connect to your local OmniRoute on port 20128 using your models with 1M context windows.
 
 ---
 
@@ -117,26 +175,32 @@ If you want to use OmniRoute to route to Gemini, DeepSeek, OpenAI, or multiple p
 
 Test that all components are operational:
 
+### Windows (PowerShell):
 ```powershell
-# Check Claude Code
 claude --version
-
-# Check OmniRoute
 omniroute status
-
-# Check Serena Code Intelligence
 serena --help
-
-# Check Graphify
 graphify --help
-
-# Check Claude-Mem Persistent Memory
 claude-mem status
-
-# Check Scrapling Stealth Scraper & MCP
 scrapling --help
-scrapling-mcp --help
-
-# Check Agent Reach Multi-Platform Router
 agent-reach doctor
+extreme-claude --version
 ```
+
+### Ubuntu Linux:
+```bash
+claude --version
+systemctl --user status omniroute
+~/.local/bin/serena --help
+~/.local/bin/graphify --help
+claude-mem status
+scrapling --help
+agent-reach doctor
+extreme-claude --version
+```
+
+---
+
+## 📄 License
+
+MIT © [Mo'men Refaey](https://github.com/Moamen-R)
