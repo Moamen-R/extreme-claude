@@ -42,42 +42,24 @@ Fully merged and cross-platform compatible for **Windows 10 / 11** and **Ubuntu 
 
 ## 🚀 Quick Installation (1-Click)
 
-### 📦 Option A: Install via GitHub Packages / NPX (Fastest)
-
-Run directly from any terminal without manual cloning:
+### ⚡ Option 1: Run Instantly via NPX (Zero Setup)
+No cloning, tokens, or registry configuration required:
 
 ```bash
-# Configure npm scope for GitHub Packages (run once)
-npm config set @moamen-r:registry https://npm.pkg.github.com
-
-# 1-Click Launch (auto-detects Windows vs. Linux)
-npx @moamen-r/extreme-claude
+npx github:Moamen-R/extreme-claude
 ```
 
-You can also install the CLI globally:
-```bash
-npm install -g @moamen-r/extreme-claude
-extreme-claude
-```
-
-#### CLI Management Commands:
-```bash
-# Update all installed global skills to latest upstream versions
-extreme-claude update
-
-# Re-sync / install all curated skills from live upstream repositories
-extreme-claude skills
-```
+- **Update all global skills**: `npx github:Moamen-R/extreme-claude update`
+- **Re-sync live skills from upstream**: `npx github:Moamen-R/extreme-claude skills`
 
 ---
 
-### 🪟 Option B: Windows Local Setup
+### 💻 Option 2: Clone & Run Locally
 
-#### Method 1: 1-Click Batch Launcher
-Double-click `setup.bat` (or right-click and select **Run as Administrator**).
+#### 🪟 Windows Setup
+**Method 1 (1-Click Batch)**: Double-click `setup.bat` (or right-click and select **Run as Administrator**).
 
-#### Method 2: PowerShell
-Open PowerShell in this repository directory and run:
+**Method 2 (PowerShell)**:
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\Install-ClaudeSetup.ps1
 ```
@@ -90,12 +72,10 @@ The script will automatically:
 
 ---
 
-### 🐧 Option C: Ubuntu Linux Local Setup
-
-In a terminal inside this directory, run:
+#### 🐧 Ubuntu Linux Setup
+In a terminal inside the cloned directory, run:
 ```bash
-chmod +x install.sh
-./install.sh
+chmod +x install.sh && ./install.sh
 ```
 *(Or run `./setup.sh`)*
 
