@@ -1,173 +1,305 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" width="100%" height="100%" fill="none">
   <defs>
-    <!-- Background Gradient -->
-    <radialGradient id="amberGlow" cx="24%" cy="50%" r="45%">
-      <stop offset="0%" stop-color="#e07a5f" stop-opacity="0.32"/>
-      <stop offset="35%" stop-color="#b45309" stop-opacity="0.14"/>
-      <stop offset="70%" stop-color="#4338ca" stop-opacity="0.06"/>
-      <stop offset="100%" stop-color="#0f1015" stop-opacity="0"/>
+    <!-- Base Obsidian Background Gradient -->
+    <linearGradient id="bg-base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07080C" />
+      <stop offset="50%" stop-color="#0B0D14" />
+      <stop offset="100%" stop-color="#08090F" />
+    </linearGradient>
+
+    <!-- Outer Frame Border Gradient -->
+    <linearGradient id="frame-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97757" stop-opacity="0.55" />
+      <stop offset="35%" stop-color="#8B5CF6" stop-opacity="0.35" />
+      <stop offset="70%" stop-color="#1E293B" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.45" />
+    </linearGradient>
+
+    <!-- Primary Brand Gradient (Claude Terracotta -> Electric Violet) -->
+    <linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A65" />
+      <stop offset="45%" stop-color="#D97757" />
+      <stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+
+    <!-- Text Accent Gradient -->
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F97316" />
+      <stop offset="45%" stop-color="#D97757" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+
+    <!-- Cyan to Violet Node Gradient -->
+    <linearGradient id="cyber-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+
+    <!-- Frosted Squircle Glass Fill -->
+    <linearGradient id="glass-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181B28" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0D0F17" stop-opacity="0.95" />
+    </linearGradient>
+
+    <!-- Squircle Glass Border -->
+    <linearGradient id="glass-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97757" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#8B5CF6" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.6" />
+    </linearGradient>
+
+    <!-- Card Pill Gradient -->
+    <linearGradient id="pill-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#161926" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0E1018" stop-opacity="0.95" />
+    </linearGradient>
+
+    <!-- Ambient Glow Orbs -->
+    <radialGradient id="orb-coral" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D97757" stop-opacity="0.24" />
+      <stop offset="55%" stop-color="#D97757" stop-opacity="0.06" />
+      <stop offset="100%" stop-color="#D97757" stop-opacity="0" />
     </radialGradient>
 
-    <!-- Copper / Amber Pyramid Gradients -->
-    <linearGradient id="pyramidFront" x1="50%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#fbd5a5"/>
-      <stop offset="40%" stop-color="#e07a5f"/>
-      <stop offset="100%" stop-color="#9a3412"/>
-    </linearGradient>
+    <radialGradient id="orb-violet" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.22" />
+      <stop offset="60%" stop-color="#8B5CF6" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0" />
+    </radialGradient>
 
-    <linearGradient id="pyramidLeft" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#fed7aa"/>
-      <stop offset="50%" stop-color="#c2410c"/>
-      <stop offset="100%" stop-color="#1e1b4b"/>
-    </linearGradient>
+    <radialGradient id="orb-cyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0" />
+    </radialGradient>
 
-    <linearGradient id="pyramidRight" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fdba74"/>
-      <stop offset="60%" stop-color="#991b1b"/>
-      <stop offset="100%" stop-color="#172554"/>
-    </linearGradient>
+    <!-- Architectural Grid Pattern -->
+    <pattern id="tech-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FFFFFF" stroke-width="0.7" stroke-opacity="0.04" />
+      <circle cx="40" cy="40" r="1" fill="#FFFFFF" fill-opacity="0.1" />
+    </pattern>
 
-    <!-- Circuit Trace Gradient -->
-    <linearGradient id="circuitGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#818cf8"/>
-      <stop offset="40%" stop-color="#fb923c"/>
-      <stop offset="100%" stop-color="#fdba74"/>
-    </linearGradient>
+    <!-- Radial Mask for Grid Fade -->
+    <radialGradient id="grid-mask-grad" cx="45%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1" />
+      <stop offset="75%" stop-color="#FFFFFF" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </radialGradient>
+    <mask id="grid-fade">
+      <rect width="1280" height="420" fill="url(#grid-mask-grad)" />
+    </mask>
 
-    <!-- Pill Glass Gradient -->
-    <linearGradient id="pillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2d313f" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#1a1c24" stop-opacity="0.9"/>
-    </linearGradient>
+    <!-- Soft Glow Filter for Nodes & Logo -->
+    <filter id="glow-strong" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="glow-subtle" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="card-shadow" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+
+    <!-- Clip Path for Rounded Banner -->
+    <clipPath id="banner-clip">
+      <rect x="2" y="2" width="1276" height="416" rx="22" />
+    </clipPath>
   </defs>
 
-  <!-- Canvas Background -->
-  <rect width="1200" height="420" fill="#0f1015"/>
-  <rect width="1200" height="420" fill="url(#amberGlow)"/>
+  <!-- ================= MAIN BANNER CONTAINER ================= -->
+  <g clip-path="url(#banner-clip)">
+    <!-- Base Obsidian Fill -->
+    <rect x="0" y="0" width="1280" height="420" fill="url(#bg-base)" />
 
-  <!-- Left: Neural Circuit Mandala & Faceted Crystal -->
-  <g transform="translate(250, 210)">
-    <!-- Circuit Traces (Radiating neural lines with 90° bends and nodes) -->
-    <g stroke="url(#circuitGrad)" stroke-width="2" fill="none" opacity="0.85" stroke-linecap="round" stroke-linejoin="round">
-      <!-- Top Branches -->
-      <path d="M 0,-75 L 0,-130 M 0,-130 L -25,-155 M 0,-130 L 25,-155"/>
-      <path d="M -15,-70 L -40,-115 L -40,-140 M -40,-115 L -70,-135"/>
-      <path d="M 15,-70 L 40,-115 L 40,-140 M 40,-115 L 70,-135"/>
-      <path d="M -30,-55 L -75,-85 L -115,-85 M -75,-85 L -90,-115"/>
-      <path d="M 30,-55 L 75,-85 L 115,-85 M 75,-85 L 90,-115"/>
+    <!-- Ambient Background Glow Orbs -->
+    <circle cx="195" cy="210" r="280" fill="url(#orb-coral)" />
+    <circle cx="620" cy="150" r="340" fill="url(#orb-violet)" />
+    <circle cx="1120" cy="260" r="260" fill="url(#orb-cyan)" />
 
-      <!-- Lateral Branches -->
-      <path d="M -45,-15 L -105,-30 L -140,-30 M -105,-30 L -125,-60"/>
-      <path d="M 45,-15 L 105,-30 L 140,-30 M 105,-30 L 125,-60"/>
-      <path d="M -50,15 L -115,20 L -145,5 M -115,20 L -135,45"/>
-      <path d="M 50,15 L 115,20 L 145,5 M 115,20 L 135,45"/>
+    <!-- Perspective Grid Overlay -->
+    <rect x="0" y="0" width="1280" height="420" fill="url(#tech-grid)" mask="url(#grid-fade)" />
 
-      <!-- Bottom Branches -->
-      <path d="M -35,50 L -80,75 L -115,75 M -80,75 L -95,110"/>
-      <path d="M 35,50 L 80,75 L 115,75 M 80,75 L 95,110"/>
-      <path d="M -20,65 L -45,110 L -45,145 M -45,110 L -75,130"/>
-      <path d="M 20,65 L 45,110 L 45,145 M 45,110 L 75,130"/>
-      <path d="M 0,75 L 0,135 M 0,135 L -25,160 M 0,135 L 25,160"/>
+    <!-- Top Light Horizon Line -->
+    <line x1="120" y1="2" x2="1160" y2="2" stroke="url(#brand-grad)" stroke-width="2" stroke-opacity="0.6" />
+
+    <!-- ================= RIGHT BACKGROUND CONSTELLATION (OmniRoute Mesh) ================= -->
+    <g opacity="0.28" stroke-linecap="round">
+      <!-- Mesh Connections -->
+      <path d="M1040 85 L1145 135 L1210 75 M1145 135 L1180 235 L1085 290 L1195 345 M1085 290 L985 245 L1040 85" stroke="url(#cyber-grad)" stroke-width="1.2" stroke-dasharray="4 4" />
+      <path d="M985 245 L1145 135" stroke="#D97757" stroke-width="1" stroke-opacity="0.5" />
+      <!-- Mesh Nodes -->
+      <circle cx="1040" cy="85" r="4" fill="#38BDF8" />
+      <circle cx="1145" cy="135" r="6" fill="#8B5CF6" />
+      <circle cx="1210" cy="75" r="3.5" fill="#D97757" />
+      <circle cx="1180" cy="235" r="5" fill="#38BDF8" />
+      <circle cx="1085" cy="290" r="5.5" fill="#D97757" />
+      <circle cx="985" cy="245" r="4" fill="#A855F7" />
+      <circle cx="1195" cy="345" r="3.5" fill="#38BDF8" />
     </g>
 
-    <!-- Circuit Nodes (Terminal dots) -->
-    <g fill="#fdba74" opacity="0.9">
-      <!-- Top dots -->
-      <circle cx="0" cy="-130" r="4.5" fill="#fef08a"/>
-      <circle cx="-25" cy="-155" r="4"/>
-      <circle cx="25" cy="-155" r="4"/>
-      <circle cx="-40" cy="-140" r="3.5"/>
-      <circle cx="40" cy="-140" r="3.5"/>
-      <circle cx="-70" cy="-135" r="3.5"/>
-      <circle cx="70" cy="-135" r="3.5"/>
-      <circle cx="-90" cy="-115" r="4"/>
-      <circle cx="90" cy="-115" r="4"/>
-      <circle cx="-115" cy="-85" r="3.5"/>
-      <circle cx="115" cy="-85" r="3.5"/>
+    <!-- ================= LEFT EMBLEM: MULTI-AGENT TERMINAL CORE ================= -->
+    <g transform="translate(195, 210)">
+      <!-- Outer Orbital Ring (Ecosystem Halo) -->
+      <circle cx="0" cy="0" r="126" stroke="url(#glass-border)" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="6 6" />
+      <circle cx="0" cy="0" r="110" stroke="#8B5CF6" stroke-width="0.75" stroke-opacity="0.2" />
 
-      <!-- Side dots -->
-      <circle cx="-140" cy="-30" r="4"/>
-      <circle cx="140" cy="-30" r="4"/>
-      <circle cx="-125" cy="-60" r="3.5"/>
-      <circle cx="125" cy="-60" r="3.5"/>
-      <circle cx="-145" cy="5" r="4"/>
-      <circle cx="145" cy="5" r="4"/>
-      <circle cx="-135" cy="45" r="3.5"/>
-      <circle cx="135" cy="45" r="3.5"/>
+      <!-- Frosted Squircle Icon Base -->
+      <rect x="-88" y="-88" width="176" height="176" rx="40" fill="url(#glass-fill)" stroke="url(#glass-border)" stroke-width="1.8" filter="url(#card-shadow)" />
 
-      <!-- Bottom dots -->
-      <circle cx="-115" cy="75" r="3.5"/>
-      <circle cx="115" cy="75" r="3.5"/>
-      <circle cx="-95" cy="110" r="4"/>
-      <circle cx="95" cy="110" r="4"/>
-      <circle cx="-45" cy="145" r="3.5"/>
-      <circle cx="45" cy="145" r="3.5"/>
-      <circle cx="-75" cy="130" r="3.5"/>
-      <circle cx="75" cy="130" r="3.5"/>
-      <circle cx="0" cy="135" r="4.5" fill="#f97316"/>
-      <circle cx="-25" cy="160" r="4"/>
-      <circle cx="25" cy="160" r="4"/>
-    </g>
+      <!-- Subtle Inner Glass Rim Highlight -->
+      <rect x="-82" y="-82" width="164" height="164" rx="35" stroke="#FFFFFF" stroke-width="0.75" stroke-opacity="0.07" fill="none" />
 
-    <!-- Glowing Aura around Central Pyramid -->
-    <polygon points="0,-65 55,42 -55,42" fill="#e07a5f" opacity="0.35" filter="blur(14px)"/>
+      <!-- Inner Hexagonal Multi-Agent Network -->
+      <polygon points="0,-64 55,-32 55,32 0,64 -55,32 -55,-32" stroke="url(#cyber-grad)" stroke-width="1.5" stroke-opacity="0.35" fill="#131622" fill-opacity="0.6" />
 
-    <!-- Central 3D Faceted Crystal Pyramid -->
-    <!-- Left Facet -->
-    <polygon points="0,-65 -55,42 0,60" fill="url(#pyramidLeft)" stroke="#fdba74" stroke-width="1.5" stroke-linejoin="round"/>
-    <!-- Right Facet -->
-    <polygon points="0,-65 55,42 0,60" fill="url(#pyramidRight)" stroke="#fdba74" stroke-width="1.5" stroke-linejoin="round"/>
-    <!-- Top Center Facet / Ridge -->
-    <polygon points="0,-65 0,60 0,10" fill="url(#pyramidFront)" stroke="#fed7aa" stroke-width="1.8"/>
-    <!-- Central Specular Highlight Edge -->
-    <line x1="0" y1="-65" x2="0" y2="60" stroke="#fff7ed" stroke-width="2.5" opacity="0.9"/>
-    <line x1="0" y1="-65" x2="-55" y2="42" stroke="#fed7aa" stroke-width="2" opacity="0.85"/>
-    <line x1="0" y1="-65" x2="55" y2="42" stroke="#fdba74" stroke-width="2" opacity="0.85"/>
-    <line x1="-55" y1="42" x2="0" y2="60" stroke="#f97316" stroke-width="2" opacity="0.7"/>
-    <line x1="55" y1="42" x2="0" y2="60" stroke="#f97316" stroke-width="2" opacity="0.7"/>
-
-    <!-- Crystal Apex Glow Point -->
-    <circle cx="0" cy="-65" r="3.5" fill="#ffffff"/>
-    <circle cx="0" cy="-65" r="7" fill="none" stroke="#fed7aa" stroke-width="1" opacity="0.6"/>
-  </g>
-
-  <!-- Right: Typography & Platform Icons -->
-  <g transform="translate(480, 215)">
-    <!-- Main Title -->
-    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="64" font-weight="900" letter-spacing="1">
-      <tspan x="0" y="0" fill="#ffffff">EXTREME-</tspan><tspan fill="#e07a5f">CLAUDE</tspan>
-    </text>
-
-    <!-- Platform Badges Row -->
-    <g transform="translate(0, 28)">
-      <!-- 1. CLI Badge -->
-      <g transform="translate(0, 0)">
-        <rect width="64" height="40" rx="20" fill="url(#pillGrad)" stroke="#3e4354" stroke-width="1.2"/>
-        <text x="32" y="26" font-family="'Courier New', Courier, monospace" font-size="19" font-weight="900" fill="#e2e8f0" text-anchor="middle">&gt;_</text>
+      <!-- Neural Routing Traces from Center to Hex Vertices -->
+      <g stroke="url(#brand-grad)" stroke-width="1.4" stroke-opacity="0.45">
+        <line x1="0" y1="-64" x2="0" y2="-28" />
+        <line x1="55" y1="-32" x2="26" y2="-15" />
+        <line x1="55" y1="32" x2="26" y2="15" />
+        <line x1="0" y1="64" x2="0" y2="28" />
+        <line x1="-55" y1="32" x2="-26" y2="15" />
+        <line x1="-55" y1="-32" x2="-26" y2="-15" />
       </g>
 
-      <!-- 2. Windows 11 Badge -->
-      <g transform="translate(76, 0)">
-        <rect width="64" height="40" rx="20" fill="url(#pillGrad)" stroke="#3e4354" stroke-width="1.2"/>
-        <!-- Windows 4-pane icon -->
-        <g transform="translate(23, 11) scale(0.85)">
-          <rect x="0" y="0" width="9.5" height="9.5" fill="#cbd5e1" rx="1"/>
-          <rect x="11.5" y="0" width="9.5" height="9.5" fill="#cbd5e1" rx="1"/>
-          <rect x="0" y="11.5" width="9.5" height="9.5" fill="#cbd5e1" rx="1"/>
-          <rect x="11.5" y="11.5" width="9.5" height="9.5" fill="#cbd5e1" rx="1"/>
+      <!-- Terminal Prompt ">_" Core Emblem (Glowing) -->
+      <g filter="url(#glow-strong)">
+        <!-- Prompt Chevron ">" -->
+        <path d="M -30 -20 L -4 0 L -30 20" stroke="url(#brand-grad)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        <!-- Terminal Cursor "_" -->
+        <line x1="6" y1="20" x2="32" y2="20" stroke="#38BDF8" stroke-width="7.5" stroke-linecap="round" />
+      </g>
+
+      <!-- Claude Spark Star at Top Right of Core -->
+      <path d="M 20 -26 L 23 -17 L 32 -14 L 23 -11 L 20 -2 L 17 -11 L 8 -14 L 17 -17 Z" fill="#FF8A65" filter="url(#glow-subtle)" />
+
+      <!-- 6 Hexagonal Specialist Agent Nodes -->
+      <g filter="url(#glow-subtle)">
+        <circle cx="0" cy="-64" r="5" fill="#F97316" stroke="#0B0D14" stroke-width="2" />
+        <circle cx="55" cy="-32" r="5" fill="#A855F7" stroke="#0B0D14" stroke-width="2" />
+        <circle cx="55" cy="32" r="5" fill="#38BDF8" stroke="#0B0D14" stroke-width="2" />
+        <circle cx="0" cy="64" r="5" fill="#F97316" stroke="#0B0D14" stroke-width="2" />
+        <circle cx="-55" cy="32" r="5" fill="#A855F7" stroke="#0B0D14" stroke-width="2" />
+        <circle cx="-55" cy="-32" r="5" fill="#38BDF8" stroke="#0B0D14" stroke-width="2" />
+      </g>
+
+      <!-- Outer Orbit Satellite Nodes -->
+      <circle cx="-89" cy="-89" r="3.5" fill="#D97757" opacity="0.85" />
+      <circle cx="108" cy="-42" r="3" fill="#38BDF8" opacity="0.85" />
+      <circle cx="89" cy="89" r="3.5" fill="#8B5CF6" opacity="0.85" />
+      <circle cx="-110" cy="35" r="2.5" fill="#F97316" opacity="0.7" />
+    </g>
+
+    <!-- ================= RIGHT CONTENT: TYPOGRAPHY & PILLS ================= -->
+    <g transform="translate(345, 0)">
+
+      <!-- Top Status Pill Badge -->
+      <g transform="translate(0, 66)">
+        <rect x="0" y="0" width="445" height="32" rx="16" fill="#131623" stroke="#262B40" stroke-width="1.2" />
+        <circle cx="18" cy="16" r="4.5" fill="#10B981" filter="url(#glow-subtle)" />
+        <text x="32" y="20.5" fill="#E2E8F0" font-family="'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace" font-size="11.5" font-weight="600" letter-spacing="1.2">
+          UNIVERSAL AI ENGINEERING ECOSYSTEM
+        </text>
+        <line x1="334" y1="8" x2="334" y2="24" stroke="#2D3548" stroke-width="1" />
+        <text x="348" y="20.5" fill="#F97316" font-family="'JetBrains Mono', 'Fira Code', monospace" font-size="11.5" font-weight="700">
+          v2.1.314+
+        </text>
+      </g>
+
+      <!-- Main Hero Title: EXTREME-CLAUDE -->
+      <text x="-3" y="172" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="72" font-weight="900" letter-spacing="-2.5">
+        <tspan fill="#FFFFFF">EXTREME</tspan><tspan fill="url(#title-grad)">-CLAUDE</tspan>
+      </text>
+
+      <!-- Subtitle Description -->
+      <text x="2" y="212" fill="#94A3B8" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18.5" font-weight="500" letter-spacing="-0.2">
+        Turnkey <tspan fill="#F8FAFC" font-weight="600">Claude Code CLI</tspan> starter pack with <tspan fill="#FDBA74" font-weight="600">OmniRoute</tspan>, <tspan fill="#C4B5FD" font-weight="600">AST Knowledge Graphs</tspan> &amp; <tspan fill="#7DD3FC" font-weight="600">Stealth MCPs</tspan>
+      </text>
+
+      <!-- ================= FEATURE METRIC CARDS (ROW 1) ================= -->
+      <g transform="translate(0, 242)">
+        <!-- Card 1: 88 Specialist Agents -->
+        <g transform="translate(0, 0)">
+          <rect x="0" y="0" width="205" height="44" rx="11" fill="url(#pill-bg)" stroke="#D97757" stroke-opacity="0.45" stroke-width="1.2" />
+          <circle cx="22" cy="22" r="10" fill="#D97757" fill-opacity="0.18" />
+          <circle cx="22" cy="22" r="4" fill="#F97316" />
+          <text x="40" y="27" fill="#F8FAFC" font-family="'Inter', -apple-system, sans-serif" font-size="13.5" font-weight="700">
+            88 <tspan fill="#CBD5E1" font-weight="500">Specialist Agents</tspan>
+          </text>
+        </g>
+
+        <!-- Card 2: 27+ Global Skills -->
+        <g transform="translate(218, 0)">
+          <rect x="0" y="0" width="182" height="44" rx="11" fill="url(#pill-bg)" stroke="#8B5CF6" stroke-opacity="0.45" stroke-width="1.2" />
+          <circle cx="22" cy="22" r="10" fill="#8B5CF6" fill-opacity="0.18" />
+          <circle cx="22" cy="22" r="4" fill="#A855F7" />
+          <text x="40" y="27" fill="#F8FAFC" font-family="'Inter', -apple-system, sans-serif" font-size="13.5" font-weight="700">
+            27+ <tspan fill="#CBD5E1" font-weight="500">Global Skills</tspan>
+          </text>
+        </g>
+
+        <!-- Card 3: 174 Plugins & 6 MCPs -->
+        <g transform="translate(413, 0)">
+          <rect x="0" y="0" width="212" height="44" rx="11" fill="url(#pill-bg)" stroke="#38BDF8" stroke-opacity="0.45" stroke-width="1.2" />
+          <circle cx="22" cy="22" r="10" fill="#38BDF8" fill-opacity="0.18" />
+          <circle cx="22" cy="22" r="4" fill="#38BDF8" />
+          <text x="40" y="27" fill="#F8FAFC" font-family="'Inter', -apple-system, sans-serif" font-size="13.5" font-weight="700">
+            174 <tspan fill="#CBD5E1" font-weight="500">Plugins &amp; 6 MCPs</tspan>
+          </text>
+        </g>
+
+        <!-- Card 4: Cross-Platform OS -->
+        <g transform="translate(638, 0)">
+          <rect x="0" y="0" width="210" height="44" rx="11" fill="url(#pill-bg)" stroke="#334155" stroke-width="1.2" />
+          <circle cx="22" cy="22" r="10" fill="#64748B" fill-opacity="0.2" />
+          <circle cx="22" cy="22" r="4" fill="#94A3B8" />
+          <text x="40" y="27" fill="#E2E8F0" font-family="'Inter', -apple-system, sans-serif" font-size="13.5" font-weight="600">
+            Windows 10/11 &amp; Linux
+          </text>
         </g>
       </g>
 
-      <!-- 3. Linux Tux Badge -->
-      <g transform="translate(152, 0)">
-        <rect width="64" height="40" rx="20" fill="url(#pillGrad)" stroke="#3e4354" stroke-width="1.2"/>
-        <!-- Penguin silhouette glyph -->
-        <path d="M 32,10 C 28.5,10 27,12.5 27,15.5 C 27,17 26,18.5 25,20 C 23.5,22 23,25 24,27 C 25,29 27,30 32,30 C 37,30 39,29 40,27 C 41,25 40.5,22 39,20 C 38,18.5 37,17 37,15.5 C 37,12.5 35.5,10 32,10 Z" fill="#cbd5e1"/>
-        <ellipse cx="32" cy="22" rx="4.5" ry="6" fill="#1e2230"/>
-        <polygon points="32,16 30,18.5 34,18.5" fill="#fb923c"/>
-        <circle cx="30" cy="14" r="0.9" fill="#0f1015"/>
-        <circle cx="34" cy="14" r="0.9" fill="#0f1015"/>
+      <!-- ================= TERMINAL NPX COMMAND BAR (ROW 2) ================= -->
+      <g transform="translate(0, 304)">
+        <rect x="0" y="0" width="520" height="48" rx="12" fill="#090B10" stroke="url(#brand-grad)" stroke-width="1.4" stroke-opacity="0.7" />
+
+        <!-- Window Traffic Dots -->
+        <circle cx="20" cy="24" r="4.5" fill="#EF4444" fill-opacity="0.8" />
+        <circle cx="35" cy="24" r="4.5" fill="#F59E0B" fill-opacity="0.8" />
+        <circle cx="50" cy="24" r="4.5" fill="#10B981" fill-opacity="0.8" />
+
+        <line x1="68" y1="12" x2="68" y2="36" stroke="#1E293B" stroke-width="1.2" />
+
+        <!-- Command Prompt Text -->
+        <text x="84" y="29" font-family="'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace" font-size="14.5" font-weight="600">
+          <tspan fill="#F97316">$</tspan>
+          <tspan fill="#94A3B8"> npx </tspan>
+          <tspan fill="#F8FAFC">github:Moamen-R/extreme-claude</tspan>
+        </text>
+
+        <!-- 1-Click Tag Inside Command Bar -->
+        <rect x="424" y="11" width="82" height="26" rx="6" fill="#D97757" fill-opacity="0.16" stroke="#D97757" stroke-opacity="0.4" stroke-width="1" />
+        <text x="465" y="28" text-anchor="middle" fill="#FDBA74" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">
+          1-CLICK
+        </text>
       </g>
+
+      <!-- Sub-stack Tech Tags next to NPX Bar -->
+      <g transform="translate(538, 310)">
+        <text x="0" y="14" fill="#64748B" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="600" letter-spacing="0.5">
+          STACK INTEGRATIONS
+        </text>
+        <text x="0" y="33" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12.5" font-weight="500">
+          Serena • Graphify • Claude-Mem • Scrapling • Agent Reach
+        </text>
+      </g>
+
     </g>
   </g>
+
+  <!-- Outer Glowing Border Frame -->
+  <rect x="2" y="2" width="1276" height="416" rx="22" stroke="url(#frame-border)" stroke-width="2" fill="none" />
 </svg>
