@@ -23,6 +23,73 @@ echo ""
 
 BACKEND_MODE="${1:-}"
 
+# Check for update command
+if [ "$BACKEND_MODE" = "update" ]; then
+    echo -e "${BLUE}======================================================${NC}"
+    echo -e "${GREEN}  Extreme Claude — Ecosystem Health & Sync Update    ${NC}"
+    echo -e "${BLUE}======================================================${NC}"
+    echo ""
+
+    echo -e "${YELLOW}[1/6] Checking for git updates...${NC}"
+    git -C "${SCRIPT_DIR}" pull --ff-only 2>/dev/null || true
+
+    echo -e "${YELLOW}[2/6] Checking for new MCP servers...${NC}"
+    if [ -f "${CONFIGS_DIR}/.claude.json" ] && command -v jq &> /dev/null; then
+        USER_MCP="$HOME/.claude.json"
+        if [ ! -f "$USER_MCP" ]; then
+            echo '{"mcpServers":{}}' > "$USER_MCP"
+        fi
+        jq -s '.[0] * .[1]' "$USER_MCP" "${CONFIGS_DIR}/.claude.json" > "${USER_MCP}.tmp" && mv "${USER_MCP}.tmp" "$USER_MCP"
+        echo "  -> MCP servers synchronized."
+    fi
+
+    echo -e "${YELLOW}[3/6] Checking for new marketplaces and plugins...${NC}"
+    if [ -f "${CONFIGS_DIR}/.claude/settings.json" ] && [ -f "$HOME/.claude/settings.json" ] && command -v jq &> /dev/null; then
+        USER_SET="$HOME/.claude/settings.json"
+        jq -s '.[0] * {extraKnownMarketplaces: (.[1].extraKnownMarketplaces * .[0].extraKnownMarketplaces), enabledPlugins: (.[1].enabledPlugins * .[0].enabledPlugins)}' \
+            "$USER_SET" "${CONFIGS_DIR}/.claude/settings.json" > "${USER_SET}.tmp" && mv "${USER_SET}.tmp" "$USER_SET"
+        echo "  -> Settings and marketplaces synchronized."
+    fi
+
+    echo -e "${YELLOW}[4/6] Checking for new specialist agents...${NC}"
+    if [ -d "${CONFIGS_DIR}/.claude/agents" ]; then
+        mkdir -p "$HOME/.claude/agents"
+        for a in "${CONFIGS_DIR}/.claude/agents/"*.md; do
+            [ -e "$a" ] || continue
+            fname=$(basename "$a")
+            if [ ! -f "$HOME/.claude/agents/$fname" ]; then
+                cp "$a" "$HOME/.claude/agents/$fname"
+                echo "  [+] Deployed new agent: $fname"
+            fi
+        done
+    fi
+
+    echo -e "${YELLOW}[5/6] Syncing and upgrading global skills...${NC}"
+    if [ -f "${CONFIGS_DIR}/skills.json" ] && command -v jq &> /dev/null; then
+        jq -c '.[]' "${CONFIGS_DIR}/skills.json" | while read -r item; do
+            pkg=$(echo "$item" | jq -r '.package')
+            skill=$(echo "$item" | jq -r '.skill')
+            if [ ! -d "$HOME/.claude/skills/$skill" ]; then
+                echo "  [+] Installing missing skill: ${skill} (${pkg})..."
+                npx -y skills add "$pkg" --skill "$skill" --agent claude-code -g -y 2>/dev/null || true
+            fi
+        done
+    fi
+    npx -y skills update -g -y 2>/dev/null || true
+
+    echo -e "${YELLOW}[6/6] Checking for toolchain updates (npm and uv)...${NC}"
+    npm update -g @anthropic-ai/claude-code omniroute claude-mem skills @alibaba-group/open-code-review 2>/dev/null || true
+    if command -v uv &> /dev/null; then
+        uv tool upgrade --all 2>/dev/null || true
+    fi
+
+    echo ""
+    echo -e "${GREEN}======================================================${NC}"
+    echo -e "${GREEN}  Update Complete! Everything is up to date.         ${NC}"
+    echo -e "${GREEN}======================================================${NC}"
+    exit 0
+fi
+
 if [ -z "$BACKEND_MODE" ]; then
     echo -e "${BLUE}------------------------------------------------------${NC}"
     echo -e "${GREEN}  Select AI Provider Backend for Claude Code          ${NC}"

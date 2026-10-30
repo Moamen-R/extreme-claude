@@ -6,10 +6,133 @@
 
 param(
     [ValidateSet("Official", "OmniRoute", "")]
-    [string]$Mode = ""
+    [string]$Mode = "",
+    [switch]$Update
 )
 
 $ErrorActionPreference = "Stop"
+
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$ConfigsDir = Join-Path $ScriptDir "configs"
+$UserProfile = $env:USERPROFILE
+$claudeTarget = Join-Path $UserProfile ".claude"
+
+# If update switch is provided, execute targeted ecosystem update
+if ($Update) {
+    Write-Host "==========================================================" -ForegroundColor Cyan
+    Write-Host "  Extreme Claude — Ecosystem Health & Sync Update        " -ForegroundColor Green
+    Write-Host "==========================================================" -ForegroundColor Cyan
+    Write-Host ""
+
+    # 1. Update Repository if inside git clone
+    Write-Host "[1/6] Checking for git updates..." -ForegroundColor Yellow
+    try {
+        git -C $ScriptDir pull --ff-only
+    } catch {}
+
+    # 2. Merge New MCP Servers
+    Write-Host "[2/6] Checking for new MCP servers..." -ForegroundColor Yellow
+    $repoMcp = Join-Path $ConfigsDir ".claude.json"
+    $userMcp = Join-Path $UserProfile ".claude.json"
+    if (Test-Path $repoMcp) {
+        try {
+            $rMcp = Get-Content $repoMcp -Raw | ConvertFrom-Json
+            $uMcp = if (Test-Path $userMcp) { Get-Content $userMcp -Raw | ConvertFrom-Json } else { [PSCustomObject]@{ mcpServers = [PSCustomObject]@{} } }
+            if (-not $uMcp.mcpServers) { $uMcp | Add-Member -MemberType NoteProperty -Name "mcpServers" -Value ([PSCustomObject]@{}) }
+            $added = 0
+            foreach ($prop in $rMcp.mcpServers.PSObject.Properties) {
+                if (-not $uMcp.mcpServers.PSObject.Properties[$prop.Name]) {
+                    $uMcp.mcpServers | Add-Member -MemberType NoteProperty -Name $prop.Name -Value $prop.Value
+                    Write-Host "  [+] Added new MCP server: $($prop.Name)" -ForegroundColor Green
+                    $added++
+                }
+            }
+            if ($added -gt 0) {
+                $uMcp | ConvertTo-Json -Depth 30 | Set-Content -Path $userMcp -Encoding UTF8
+            }
+        } catch {}
+    }
+
+    # 3. Merge New Marketplaces & Plugins
+    Write-Host "[3/6] Checking for new plugin marketplaces and plugins..." -ForegroundColor Yellow
+    $repoSet = Join-Path $ConfigsDir ".claude\settings.json"
+    $userSet = Join-Path $claudeTarget "settings.json"
+    if ((Test-Path $repoSet) -and (Test-Path $userSet)) {
+        try {
+            $rSet = Get-Content $repoSet -Raw | ConvertFrom-Json
+            $uSet = Get-Content $userSet -Raw | ConvertFrom-Json
+            $changed = $false
+            if ($rSet.extraKnownMarketplaces) {
+                if (-not $uSet.extraKnownMarketplaces) { $uSet | Add-Member -MemberType NoteProperty -Name "extraKnownMarketplaces" -Value ([PSCustomObject]@{}) }
+                foreach ($mk in $rSet.extraKnownMarketplaces.PSObject.Properties) {
+                    if (-not $uSet.extraKnownMarketplaces.PSObject.Properties[$mk.Name]) {
+                        $uSet.extraKnownMarketplaces | Add-Member -MemberType NoteProperty -Name $mk.Name -Value $mk.Value
+                        Write-Host "  [+] Added new marketplace: $($mk.Name)" -ForegroundColor Green
+                        $changed = $true
+                    }
+                }
+            }
+            if ($rSet.enabledPlugins) {
+                if (-not $uSet.enabledPlugins) { $uSet | Add-Member -MemberType NoteProperty -Name "enabledPlugins" -Value ([PSCustomObject]@{}) }
+                foreach ($pl in $rSet.enabledPlugins.PSObject.Properties) {
+                    if (-not $uSet.enabledPlugins.PSObject.Properties[$pl.Name]) {
+                        $uSet.enabledPlugins | Add-Member -MemberType NoteProperty -Name $pl.Name -Value $pl.Value
+                        Write-Host "  [+] Added new plugin: $($pl.Name)" -ForegroundColor Green
+                        $changed = $true
+                    }
+                }
+            }
+            if ($changed) {
+                $uSet | ConvertTo-Json -Depth 30 | Set-Content -Path $userSet -Encoding UTF8
+            }
+        } catch {}
+    }
+
+    # 4. Deploy newly added specialist agents
+    Write-Host "[4/6] Checking for new specialist agents..." -ForegroundColor Yellow
+    $repoAgents = Join-Path $ConfigsDir ".claude\agents"
+    $userAgents = Join-Path $claudeTarget "agents"
+    if (Test-Path $repoAgents) {
+        New-Item -ItemType Directory -Path $userAgents -Force | Out-Null
+        $aList = Get-ChildItem -Path $repoAgents -Filter "*.md"
+        foreach ($a in $aList) {
+            $dst = Join-Path $userAgents $a.Name
+            if (-not (Test-Path $dst)) {
+                Copy-Item -Path $a.FullName -Destination $dst -Force
+                Write-Host "  [+] Deployed new agent: $($a.Name)" -ForegroundColor Green
+            }
+        }
+    }
+
+    # 5. Check missing skills and upgrade existing skills
+    Write-Host "[5/6] Syncing and upgrading global skills..." -ForegroundColor Yellow
+    $skillsManifest = Join-Path $ConfigsDir "skills.json"
+    if (Test-Path $skillsManifest) {
+        $userSkills = Join-Path $claudeTarget "skills"
+        try {
+            $sList = Get-Content $skillsManifest -Raw | ConvertFrom-Json
+            foreach ($s in $sList) {
+                $sDest = Join-Path $userSkills $s.skill
+                if (-not (Test-Path $sDest)) {
+                    Write-Host "  [+] Installing missing skill: $($s.skill)..." -ForegroundColor Green
+                    npx -y skills add $s.package --skill $s.skill --agent claude-code -g -y 2>$null
+                }
+            }
+        } catch {}
+        npx -y skills update -g -y
+    }
+
+    # 6. Upgrade Core Toolchain packages
+    Write-Host "[6/6] Checking for toolchain updates (npm and uv)..." -ForegroundColor Yellow
+    npm update -g @anthropic-ai/claude-code omniroute claude-mem skills @alibaba-group/open-code-review
+    try { uv tool upgrade --all } catch {}
+
+    Write-Host ""
+    Write-Host "==========================================================" -ForegroundColor Green
+    Write-Host "  Update Complete! Everything is up to date.             " -ForegroundColor Green
+    Write-Host "==========================================================" -ForegroundColor Green
+    exit 0
+}
 
 Write-Host "==========================================================" -ForegroundColor Cyan
 Write-Host "  Claude Code & AI Ecosystem Installer for Windows       " -ForegroundColor Green
