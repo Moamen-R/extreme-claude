@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="Extreme Claude Banner" width="100%" />
+</p>
+
 # Claude Code & Multi-Agent AI Ecosystem (Universal Windows & Linux Setup)
 
 [![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)

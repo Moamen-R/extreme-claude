@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="amberGlow" cx="24%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#e07a5f" stop-opacity="0.32"/>
+      <stop offset="35%" stop-color="#b45309" stop-opacity="0.14"/>
+      <stop offset="70%" stop-color="#4338ca" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#0f1015" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Copper / Amber Pyramid Gradients -->
+    <linearGradient id="pyramidFront" x1="50%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbd5a5"/>
+      <stop offset="40%" stop-color="#e07a5f"/>
+      <stop offset="100%" stop-color="#9a3412"/>
+    </linearGradient>
+
+    <linearGradient id="pyramidLeft" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fed7aa"/>
+      <stop offset="50%" stop-color="#c2410c"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+
+    <linearGradient id="pyramidRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdba74"/>
+      <stop offset="60%" stop-color="#991b1b"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+
+    <!-- Circuit Trace Gradient -->
+    <linearGradient id="circuitGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="40%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#fdba74"/>
+    </linearGradient>
+
+    <!-- Pill Glass Gradient -->
+    <linearGradient id="pillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d313f" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#1a1c24" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="420" fill="#0f1015"/>
+  <rect width="1200" height="420" fill="url(#amberGlow)"/>
+
+  <!-- Left: Neural Circuit Mandala & Faceted Crystal -->
+  <g transform="translate(250, 210)">
+    <!-- Circuit Traces (Radiating neural lines with 90° bends and nodes) -->
+    <g stroke="url(#circuitGrad)" stroke-width="2" fill="none" opacity="0.85" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Top Branches -->
+      <path d="M 0,-75 L 0,-130 M 0,-130 L -25,-155 M 0,-130 L 25,-155"/>
+      <path d="M -15,-70 L -40,-115 L -40,-140 M -40,-115 L -70,-135"/>
+      <path d="M 15,-70 L 40,-115 L 40,-140 M 40,-115 L 70,-135"/>
+      <path d="M -30,-55 L -75,-85 L -115,-85 M -75,-85 L -90,-115"/>
+      <path d="M 30,-55 L 75,-85 L 115,-85 M 75,-85 L 90,-115"/>
+
+      <!-- Lateral Branches -->
+      <path d="M -45,-15 L -105,-30 L -140,-30 M -105,-30 L -125,-60"/>
+      <path d="M 45,-15 L 105,-30 L 140,-30 M 105,-30 L 125,-60"/>
+      <path d="M -50,15 L -115,20 L -145,5 M -115,20 L -135,45"/>
+      <path d="M 50,15 L 115,20 L 145,5 M 115,20 L 135,45"/>
+
+      <!-- Bottom Branches -->
+      <path d="M -35,50 L -80,75 L -115,75 M -80,75 L -95,110"/>
+      <path d="M 35,50 L 80,75 L 115,75 M 80,75 L 95,110"/>
+      <path d="M -20,65 L -45,110 L -45,145 M -45,110 L -75,130"/>
+      <path d="M 20,65 L 45,110 L 45,145 M 45,110 L 75,130"/>
+      <path d="M 0,75 L 0,135 M 0,135 L -25,160 M 0,135 L 25,160"/>
+    </g>
+
+    <!-- Circuit Nodes (Terminal dots) -->
+    <g fill="#fdba74" opacity="0.9">
+      <!-- Top dots -->
+      <circle cx="0" cy="-130" r="4.5" fill="#fef08a"/>
+      <circle cx="-25" cy="-155" r="4"/>
+      <circle cx="25" cy="-155" r="4"/>
+      <circle cx="-40" cy="-140" r="3.5"/>
+      <circle cx="40" cy="-140" r="3.5"/>
+      <circle cx="-70" cy="-135" r="3.5"/>
+      <circle cx="70" cy="-135" r="3.5"/>
+      <circle cx="-90" cy="-115" r="4"/>
+      <circle cx="90" cy="-115" r="4"/>
+      <circle cx="-115" cy="-85" r="3.5"/>
+      <circle cx="115" cy="-85" r="3.5"/>
+
+      <!-- Side dots -->
+      <circle cx="-140" cy="-30" r="4"/>
+      <circle cx="140" cy="-30" r="4"/>
+      <circle cx="-125" cy="-60" r="3.5"/>
+      <circle cx="125" cy="-60" r="3.5"/>
+      <circle cx="-145" cy="5" r="4"/>
+      <circle cx="145" cy="5" r="4"/>
+      <circle cx="-135" cy="45" r="3.5"/>
+      <circle cx="135" cy="45" r="3.5"/>
+
+      <!-- Bottom dots -->
+      <circle cx="-115" cy="75" r="3.5"/>
+      <circle cx="115" cy="75" r="3.5"/>
+      <circle cx="-95" cy="110" r="4"/>
+      <circle cx="95" cy="110" r="4"/>
+      <circle cx="-45" cy="145" r="3.5"/>
+      <circle cx="45" cy="145" r="3.5"/>
+      <circle cx="-75" cy="130" r="3.5"/>
+      <circle cx="75" cy="130" r="3.5"/>
+      <circle cx="0" cy="135" r="4.5" fill="#f97316"/>
+      <circle cx="-25" cy="160" r="4"/>
+      <circle cx="25" cy="160" r="4"/>
+    </g>
+
+    <!-- Glowing Aura around Central Pyramid -->
+    <polygon points="0,-65 55,42 -55,42" fill="#e07a5f" opacity="0.35" filter="blur(14px)"/>
+
+    <!-- Central 3D Faceted Crystal Pyramid -->
+    <!-- Left Facet -->
+    <polygon points="0,-65 -55,42 0,60" fill="url(#pyramidLeft)" stroke="#fdba74" stroke-width="1.5" stroke-linejoin="round"/>
+    <!-- Right Facet -->
+    <polygon points="0,-65 55,42 0,60" fill="url(#pyramidRight)" stroke="#fdba74" stroke-width="1.5" stroke-linejoin="round"/>
+    <!-- Top Center Facet / Ridge -->
+    <polygon points="0,-65 0,60 0,10" fill="url(#pyramidFront)" stroke="#fed7aa" stroke-width="1.8"/>
+    <!-- Central Specular Highlight Edge -->
+    <line x1="0" y1="-65" x2="0" y2="60" stroke="#fff7ed" stroke-width="2.5" opacity="0.9"/>
+    <line x1="0" y1="-65" x2="-55" y2="42" stroke="#fed7aa" stroke-width="2" opacity="0.85"/>
+    <line x1="0" y1="-65" x2="55" y2="42" stroke="#fdba74" stroke-width="2" opacity="0.85"/>
+    <line x1="-55" y1="42" x2="0" y2="60" stroke="#f97316" stroke-width="2" opacity="0.7"/>
+    <line x1="55" y1="42" x2="0" y2="60" stroke="#f97316" stroke-width="2" opacity="0.7"/>
+
+    <!-- Crystal Apex Glow Point -->
+    <circle cx="0" cy="-65" r="3.5" fill="#ffffff"/>
+    <circle cx="0" cy="-65" r="7" fill="none" stroke="#fed7aa" stroke-width="1" opacity="0.6"/>
+  </g>
+
+  <!-- Right: Typography & Platform Icons -->
+  <g transform="translate(480, 215)">
+    <!-- Main Title -->
+    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="64" font-weight="900" letter-spacing="1">
+      <tspan x="0" y="0" fill="#ffffff">EXTREME-</tspan><tspan fill="#e07a5f">CLAUDE</tspan>
+    </text>
+
+    <!-- Platform Badges Row -->
+    <g transform="translate(0, 28)">
+      <!-- 1. CLI Badge -->
+      <g transform="translate(0, 0)">
+        <rect width="64" height="40" rx="20" fill="url(#pillGrad)" stroke="#3e4354" stroke-width="1.2"/>
+        <text x="32" y="26" font-family="'Courier New', Courier, monospace" font-size="19" font-weight="900" fill="#e2e8f0" text-anchor="middle">&gt;_</text>
+      </g>
+
+      <!-- 2. Windows 11 Badge -->
+      <g transform="translate(76, 0)">
+        <rect width="64" height="40" rx="20" fill="url(#pillGrad)" stroke="#3e4354" stroke-width="1.2"/>
+        <!-- Windows 4-pane icon -->
+        <g transform="translate(23, 11) scale(0.85)">
+          <rect x="0" y="0" width="9.5" height="9.5" fill="#cbd5e1" rx="1"/>
+          <rect x="11.5" y="0" width="9.5" height="9.5" fill="#cbd5e1" rx="1"/>
+          <rect x="0" y="11.5" width="9.5" height="9.5" fill="#cbd5e1" rx="1"/>
+          <rect x="11.5" y="11.5" width="9.5" height="9.5" fill="#cbd5e1" rx="1"/>
+        </g>
+      </g>
+
+      <!-- 3. Linux Tux Badge -->
+      <g transform="translate(152, 0)">
+        <rect width="64" height="40" rx="20" fill="url(#pillGrad)" stroke="#3e4354" stroke-width="1.2"/>
+        <!-- Penguin silhouette glyph -->
+        <path d="M 32,10 C 28.5,10 27,12.5 27,15.5 C 27,17 26,18.5 25,20 C 23.5,22 23,25 24,27 C 25,29 27,30 32,30 C 37,30 39,29 40,27 C 41,25 40.5,22 39,20 C 38,18.5 37,17 37,15.5 C 37,12.5 35.5,10 32,10 Z" fill="#cbd5e1"/>
+        <ellipse cx="32" cy="22" rx="4.5" ry="6" fill="#1e2230"/>
+        <polygon points="32,16 30,18.5 34,18.5" fill="#fb923c"/>
+        <circle cx="30" cy="14" r="0.9" fill="#0f1015"/>
+        <circle cx="34" cy="14" r="0.9" fill="#0f1015"/>
+      </g>
+    </g>
+  </g>
+</svg>
