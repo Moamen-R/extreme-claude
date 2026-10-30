@@ -1,6 +1,6 @@
 {
   "name": "@moamen-r/extreme-claude",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Turnkey 1-click cross-platform installer for Claude Code & full AI engineering ecosystem",
   "main": "bin/index.js",
   "bin": {

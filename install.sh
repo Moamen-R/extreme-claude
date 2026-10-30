@@ -39,7 +39,7 @@ if [ "$BACKEND_MODE" = "update" ]; then
         if [ ! -f "$USER_MCP" ]; then
             echo '{"mcpServers":{}}' > "$USER_MCP"
         fi
-        jq -s '.[0] * .[1]' "$USER_MCP" "${CONFIGS_DIR}/.claude.json" > "${USER_MCP}.tmp" && mv "${USER_MCP}.tmp" "$USER_MCP"
+        jq -s '.[1] * .[0]' "$USER_MCP" "${CONFIGS_DIR}/.claude.json" > "${USER_MCP}.tmp" && mv "${USER_MCP}.tmp" "$USER_MCP"
         echo "  -> MCP servers synchronized."
     fi
 
