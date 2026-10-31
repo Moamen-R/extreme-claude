@@ -5,7 +5,7 @@
 # ⚡ Extreme Claude
 ### Universal Claude Code & Multi-Agent AI Engineering Ecosystem
 
-*A turnkey, sanitized starter pack that transforms **Claude Code** into a full-stack autonomous engineering workstation—pre-loaded with **88 Specialist Agents**, **108 Global Skills**, **183 Plugins**, **26 Curated Marketplaces**, **6 Intelligence MCPs**, and **OmniRoute Multi-Model Routing**.*
+*A turnkey, sanitized starter pack that transforms **Claude Code** into a full-stack autonomous engineering workstation—pre-loaded with **88 Specialist Agents**, **115 Global Skills**, **183 Plugins**, **26 Curated Marketplaces**, **6 Intelligence MCPs**, and **OmniRoute Multi-Model Routing**.*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-3b82f6?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
 [![GitHub Release](https://img.shields.io/github/v/release/Moamen-R/extreme-claude?include_prereleases&style=for-the-badge&logo=github&color=10b981)](https://github.com/Moamen-R/extreme-claude/releases)
@@ -47,7 +47,7 @@ flowchart TB
     subgraph Core ["🧠 Orchestration, Guards & Extensions"]
         direction LR
         Agents["🤖 88 Specialist Agents\n(~/.claude/agents/)"]
-        Skills["🧰 108 Global Skills\n(~/.claude/skills/)"]
+        Skills["🧰 115 Global Skills\n(~/.claude/skills/)"]
         Plugins["🔌 183 Enabled Plugins\n(26 Curated Marketplaces)"]
     end
 
@@ -152,7 +152,7 @@ cd extreme-claude
   1. Verify or install Node.js (v22 LTS) and Astral `uv`.
   2. Install Python-based intelligence tools (`serena-agent`, `graphifyy`, and `scrapling[ai]`) via `uv`.
   3. Install `@anthropic-ai/claude-code`, `omniroute`, `claude-mem`, `skills`, and ecosystem CLIs globally via `npm`.
-  4. Deploy all 88 specialist agents, 108 global skills, 183 plugins across 26 marketplaces, and merged MCP configurations to `~/.claude` and `~/.claude.json`.
+  4. Deploy all 88 specialist agents, 115 global skills, 183 plugins across 26 marketplaces, and merged MCP configurations to `~/.claude` and `~/.claude.json`.
 
 ---
 
@@ -213,6 +213,7 @@ All skills are installed at global user scope (`~/.claude/skills/`) and tracked 
 | **🧠 Codebase Comprehension** | **`understand-diff`** | [`Egonex-AI/Understand-Anything`](https://github.com/Egonex-AI/Understand-Anything) | Blast radius, dependency trace, and risk analysis for PRs |
 | **🎬 Video & Media Motion** | **`hyperframes`** | [`heygen-com/hyperframes`](https://github.com/heygen-com/hyperframes) | Create, edit, animate, and render production videos from HTML |
 | **🎬 Video & Media Motion** | **`hyperframes-cli`** | [`heygen-com/hyperframes`](https://github.com/heygen-com/hyperframes) | Video scaffolding, timeline inspection, and rendering pipeline |
+| **🎬 Video & Media Motion** | **`remotion-best-practices`** | [`remotion-dev/skills`](https://github.com/remotion-dev/skills) | Router and architecture rules for Remotion programmatic video |
 | **🛠️ Harness Engineering** | **`cli-anything`** | [`HKUDS/CLI-Anything`](https://github.com/HKUDS/CLI-Anything) | Build stateful CLI harnesses for GUI applications with Click & REPL |
 | **🎯 Cognitive Flow** | **`i-have-adhd`** | [`ayghri/i-have-adhd`](https://github.com/ayghri/i-have-adhd) | Action-first, numbered steps, tangent-free output shaping |
 | **📦 Headless CMS** | **`payload`** | [`payloadcms/payload`](https://github.com/payloadcms/payload) | Collections, fields, hooks, access control, and database adapters |

@@ -193,5 +193,10 @@
     "package": "reactive-resume/reactive-resume",
     "skill": "mock-interview",
     "description": "Interactive scored mock interviews for specific roles and personas"
+  },
+  {
+    "package": "remotion-dev/skills",
+    "skill": "remotion-best-practices",
+    "description": "Router and design rules for Remotion programmatic video development"
   }
 ]

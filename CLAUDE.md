@@ -165,6 +165,7 @@ You are proactively responsible for evolving **Section 6 (`Dynamic Workspace & D
 - **Knowledge Graph Sync**: `graphify update .` *(when `graphify-out/` is present)*
 
 ### 6.3 Learned Developer Preferences & Coding Style
+- **Git Commit Hygiene**: NEVER include `Co-Authored-By` or AI attribution trailers in git commit messages; keep commit messages clean and conventional.
 - **Code & Diff Discipline**: Prefer minimal viable diffs, early returns over deep nesting, strict end-to-end typing (zero `any`), and explicit error handling at boundaries.
 - **UI/UX & Visual Craft (When Touching Frontend)**: Favor modern, sleek component geometry, balanced grid symmetry, subtle ambient glows/gradients, strict Light/Dark theme parity, and 95–100 Lighthouse performance/accessibility scores.
 
