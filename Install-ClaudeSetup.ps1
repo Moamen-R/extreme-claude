@@ -372,7 +372,7 @@ Write-Host ""
 Write-Host "Everything is installed:" -ForegroundColor Cyan
 Write-Host '  [+] Claude Code CLI (@anthropic-ai/claude-code)' -ForegroundColor White
 Write-Host '  [+] 88 Custom Specialist Agents in ~/.claude/agents' -ForegroundColor White
-Write-Host '  [+] 17 Marketplaces and 174 Plugins configured' -ForegroundColor White
+Write-Host '  [+] 26 Marketplaces, 183 Plugins, and 108 Global Skills configured' -ForegroundColor White
 Write-Host '  [+] OmniRoute Smart AI Router CLI' -ForegroundColor White
 Write-Host '  [+] Serena Code Intelligence MCP & Graphify' -ForegroundColor White
 Write-Host '  [+] Claude-Mem Persistent Memory & MCP' -ForegroundColor White

@@ -154,6 +154,54 @@
         "repo": "DietrichGebert/ponytail"
       },
       "autoUpdate": true
+    },
+    "nextjs": {
+      "source": {
+        "source": "github",
+        "repo": "vercel/next.js"
+      }
+    },
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    },
+    "understand-anything": {
+      "source": {
+        "source": "github",
+        "repo": "Egonex-AI/Understand-Anything"
+      }
+    },
+    "career-ops": {
+      "source": {
+        "source": "github",
+        "repo": "career-ops-hq/career-ops"
+      }
+    },
+    "diagram-design": {
+      "source": {
+        "source": "github",
+        "repo": "cathrynlavery/diagram-design"
+      }
+    },
+    "cli-anything": {
+      "source": {
+        "source": "github",
+        "repo": "HKUDS/CLI-Anything"
+      }
+    },
+    "i-have-adhd": {
+      "source": {
+        "source": "github",
+        "repo": "ayghri/i-have-adhd"
+      }
+    },
+    "reactive-resume": {
+      "source": {
+        "source": "github",
+        "repo": "reactive-resume/reactive-resume"
+      }
     }
   },
   "autoMode": {
@@ -375,7 +423,16 @@
     "commit-commands@anthropic-plugin-directory": true,
     "pr-review-toolkit@anthropic-plugin-directory": true,
     "chrome-devtools-mcp@claude-plugins-official": true,
-    "ponytail@ponytail": true
+    "ponytail@ponytail": true,
+    "nextjs@nextjs": true,
+    "caveman@caveman": true,
+    "understand-anything@understand-anything": true,
+    "career-ops@career-ops": true,
+    "hyperframes@hyperframes": true,
+    "diagram-design@diagram-design": true,
+    "cli-anything@cli-anything": true,
+    "i-have-adhd@i-have-adhd": true,
+    "reactive-resume@reactive-resume": true
   },
   "theme": "dark",
   "model": "antigravity/gemini-3.8-flash-high"

@@ -1,20 +1,197 @@
 [
-  { "package": "mattpocock/skills", "skill": "grill-with-docs", "description": "Challenge and refine technical plans against official docs" },
-  { "package": "mattpocock/skills", "skill": "improve-codebase-architecture", "description": "Architectural analysis and dependency refactoring" },
-  { "package": "mattpocock/skills", "skill": "setup-matt-pocock-skills", "description": "Bootstrap Matt Pocock engineering skill suite" },
-  { "package": "mattpocock/skills", "skill": "code-review", "description": "Standards and spec-based code reviewer" },
-  { "package": "mattpocock/skills", "skill": "wayfinder", "description": "Deconstruct large milestones into decision tickets" },
-  { "package": "mattpocock/skills", "skill": "git-guardrails-claude-code", "description": "Defensive git safety hooks preventing destructive commands" },
-  { "package": "mattpocock/skills", "skill": "writing-for-agents", "description": "Writing clear, high-signal documentation for AI agents" },
-  { "package": "mattpocock/skills", "skill": "triage", "description": "Scope-boundary triage and out-of-scope management" },
-  { "package": "vercel-labs/agent-browser", "skill": "agent-browser", "description": "Headless and GUI browser automation CLI for AI agents" },
-  { "package": "vercel-labs/agent-skills", "skill": "vercel-react-best-practices", "description": "React and Next.js performance optimization patterns" },
-  { "package": "vercel-labs/agent-skills", "skill": "find-skills", "description": "Discover and install agent skills from skills.sh" },
-  { "package": "leonxlnx/taste-skill", "skill": "design-taste-frontend", "description": "Anti-slop frontend art direction, palettes and layout engine" },
-  { "package": "juliusbrussee/caveman", "skill": "caveman", "description": "Terse high-density output minimizing token usage" },
-  { "package": "addyosmani/web-quality-skills", "skill": "accessibility", "description": "WCAG 2.2 accessibility auditor and remediation guide" },
-  { "package": "addyosmani/web-quality-skills", "skill": "core-web-vitals", "description": "LCP, INP, and CLS performance tuning" },
-  { "package": "addyosmani/web-quality-skills", "skill": "performance", "description": "Web speed and runtime performance optimization" },
-  { "package": "addyosmani/web-quality-skills", "skill": "seo", "description": "Search engine visibility and structured metadata" },
-  { "package": "addyosmani/web-quality-skills", "skill": "web-quality-audit", "description": "Full evidence-led web quality audit" }
+  {
+    "package": "mattpocock/skills",
+    "skill": "grill-with-docs",
+    "description": "Challenge and refine technical plans against official docs"
+  },
+  {
+    "package": "mattpocock/skills",
+    "skill": "improve-codebase-architecture",
+    "description": "Architectural analysis and dependency refactoring"
+  },
+  {
+    "package": "mattpocock/skills",
+    "skill": "setup-matt-pocock-skills",
+    "description": "Bootstrap Matt Pocock engineering skill suite"
+  },
+  {
+    "package": "mattpocock/skills",
+    "skill": "code-review",
+    "description": "Standards and spec-based code reviewer"
+  },
+  {
+    "package": "mattpocock/skills",
+    "skill": "wayfinder",
+    "description": "Deconstruct large milestones into decision tickets"
+  },
+  {
+    "package": "mattpocock/skills",
+    "skill": "git-guardrails-claude-code",
+    "description": "Defensive git safety hooks preventing destructive commands"
+  },
+  {
+    "package": "mattpocock/skills",
+    "skill": "writing-for-agents",
+    "description": "Writing clear, high-signal documentation for AI agents"
+  },
+  {
+    "package": "mattpocock/skills",
+    "skill": "triage",
+    "description": "Scope-boundary triage and out-of-scope management"
+  },
+  {
+    "package": "vercel-labs/agent-browser",
+    "skill": "agent-browser",
+    "description": "Headless and GUI browser automation CLI for AI agents"
+  },
+  {
+    "package": "vercel-labs/agent-skills",
+    "skill": "vercel-react-best-practices",
+    "description": "React and Next.js performance optimization patterns"
+  },
+  {
+    "package": "vercel-labs/agent-skills",
+    "skill": "find-skills",
+    "description": "Discover and install agent skills from skills.sh"
+  },
+  {
+    "package": "leonxlnx/taste-skill",
+    "skill": "design-taste-frontend",
+    "description": "Anti-slop frontend art direction, palettes and layout engine"
+  },
+  {
+    "package": "juliusbrussee/caveman",
+    "skill": "caveman",
+    "description": "Terse high-density output minimizing token usage"
+  },
+  {
+    "package": "addyosmani/web-quality-skills",
+    "skill": "accessibility",
+    "description": "WCAG 2.2 accessibility auditor and remediation guide"
+  },
+  {
+    "package": "addyosmani/web-quality-skills",
+    "skill": "core-web-vitals",
+    "description": "LCP, INP, and CLS performance tuning"
+  },
+  {
+    "package": "addyosmani/web-quality-skills",
+    "skill": "performance",
+    "description": "Web speed and runtime performance optimization"
+  },
+  {
+    "package": "addyosmani/web-quality-skills",
+    "skill": "seo",
+    "description": "Search engine visibility and structured metadata"
+  },
+  {
+    "package": "addyosmani/web-quality-skills",
+    "skill": "web-quality-audit",
+    "description": "Full evidence-led web quality audit"
+  },
+  {
+    "package": "pbakaus/impeccable",
+    "skill": "impeccable",
+    "description": "Design fluency, critique, audit, polish, and anti-pattern detection for UI/UX"
+  },
+  {
+    "package": "vercel/next.js",
+    "skill": "next-dev-loop",
+    "description": "Verify Next.js runtime behavior combining /_next/mcp and agent-browser"
+  },
+  {
+    "package": "vercel/next.js",
+    "skill": "next-bundle-optimizer",
+    "description": "Audit and reduce Next.js browser initial-load bundle work"
+  },
+  {
+    "package": "vercel/next.js",
+    "skill": "next-cache-components-adoption",
+    "description": "Adopt Cache Components and resolve blocking routes in Next.js"
+  },
+  {
+    "package": "vercel/next.js",
+    "skill": "next-cache-components-optimizer",
+    "description": "Optimize meaningful UI available on initial or soft navigation"
+  },
+  {
+    "package": "vercel/next.js",
+    "skill": "next-partial-prefetching-adoption",
+    "description": "Adopt Partial Prefetching and verify prefetching behavior"
+  },
+  {
+    "package": "vercel/next.js",
+    "skill": "next-partial-prefetching-optimizer",
+    "description": "Optimize prefetching payload and timing before click"
+  },
+  {
+    "package": "Egonex-AI/Understand-Anything",
+    "skill": "understand",
+    "description": "Analyze codebase to produce interactive architecture knowledge graphs"
+  },
+  {
+    "package": "Egonex-AI/Understand-Anything",
+    "skill": "understand-explain",
+    "description": "Deep-dive technical explanation of specific files, modules, or functions"
+  },
+  {
+    "package": "Egonex-AI/Understand-Anything",
+    "skill": "understand-diff",
+    "description": "Analyze git diffs and PRs for affected components, blast radius, and risks"
+  },
+  {
+    "package": "career-ops-hq/career-ops",
+    "skill": "career-ops",
+    "description": "AI job search agent: scan portals, evaluate JDs, tailor CVs, and track applications"
+  },
+  {
+    "package": "heygen-com/hyperframes",
+    "skill": "hyperframes",
+    "description": "Create, edit, animate, and render production videos from HTML"
+  },
+  {
+    "package": "heygen-com/hyperframes",
+    "skill": "hyperframes-cli",
+    "description": "HyperFrames CLI workflow: scaffold, preview, and render videos"
+  },
+  {
+    "package": "cathrynlavery/diagram-design",
+    "skill": "diagram-design",
+    "description": "Create branded architecture, flowcharts, sequences, ERDs, and cloud diagrams"
+  },
+  {
+    "package": "HKUDS/CLI-Anything",
+    "skill": "cli-anything",
+    "description": "Build stateful CLI harnesses for GUI applications following the CLI-Anything methodology"
+  },
+  {
+    "package": "ayghri/i-have-adhd",
+    "skill": "i-have-adhd",
+    "description": "Action-first, ADHD-friendly output shaping for Claude Code"
+  },
+  {
+    "package": "payloadcms/payload",
+    "skill": "payload",
+    "description": "Payload CMS architecture, collections, fields, hooks, and database adapters"
+  },
+  {
+    "package": "reactive-resume/reactive-resume",
+    "skill": "resume-tailor",
+    "description": "Tailor resume and cover letter to specific job postings with ATS alignment"
+  },
+  {
+    "package": "reactive-resume/reactive-resume",
+    "skill": "resume-builder",
+    "description": "Build complete resume JSON conforming to Reactive Resume schema"
+  },
+  {
+    "package": "reactive-resume/reactive-resume",
+    "skill": "interview-prep",
+    "description": "Prepare STAR interview stories, competency answers, and company briefs"
+  },
+  {
+    "package": "reactive-resume/reactive-resume",
+    "skill": "mock-interview",
+    "description": "Interactive scored mock interviews for specific roles and personas"
+  }
 ]

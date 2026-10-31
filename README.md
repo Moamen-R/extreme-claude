@@ -5,7 +5,7 @@
 # ⚡ Extreme Claude
 ### Universal Claude Code & Multi-Agent AI Engineering Ecosystem
 
-*A turnkey, sanitized starter pack that transforms **Claude Code** into a full-stack autonomous engineering workstation—pre-loaded with **88 Specialist Agents**, **27+ Global Skills**, **174 Plugins**, **6 Intelligence MCPs**, and **OmniRoute Multi-Model Routing**.*
+*A turnkey, sanitized starter pack that transforms **Claude Code** into a full-stack autonomous engineering workstation—pre-loaded with **88 Specialist Agents**, **108 Global Skills**, **183 Plugins**, **26 Curated Marketplaces**, **6 Intelligence MCPs**, and **OmniRoute Multi-Model Routing**.*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-3b82f6?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
 [![GitHub Release](https://img.shields.io/github/v/release/Moamen-R/extreme-claude?include_prereleases&style=for-the-badge&logo=github&color=10b981)](https://github.com/Moamen-R/extreme-claude/releases)
@@ -47,8 +47,8 @@ flowchart TB
     subgraph Core ["🧠 Orchestration, Guards & Extensions"]
         direction LR
         Agents["🤖 88 Specialist Agents\n(~/.claude/agents/)"]
-        Skills["🧰 27+ Global Skills\n(~/.claude/skills/)"]
-        Plugins["🔌 174 Enabled Plugins\n(18 Curated Marketplaces)"]
+        Skills["🧰 108 Global Skills\n(~/.claude/skills/)"]
+        Plugins["🔌 183 Enabled Plugins\n(26 Curated Marketplaces)"]
     end
 
     subgraph MCP ["🛰️ Persistent Memory, Code & Web Intelligence MCPs"]
@@ -78,7 +78,7 @@ flowchart TB
 
 ### 1. Official Claude Code CLI & Plugin Ecosystem
 - **Automated Global Setup**: Installs `@anthropic-ai/claude-code` globally with sanitized defaults.
-- **18 Curated Marketplaces & 174 Enabled Plugins**: Pre-configured out of the box (including `hyperframes`, `superpowers`, `omc`, and more).
+- **26 Curated Marketplaces & 183 Enabled Plugins**: Pre-configured out of the box (including `nextjs`, `hyperframes`, `impeccable`, `caveman`, `understand-anything`, `diagram-design`, `cli-anything`, `career-ops`, `reactive-resume`, `superpowers`, `omc`, and more).
 - **Defensive Guardrails**: Clean, pre-configured tool-use guards and lifecycle hooks that prevent destructive operations.
 
 ---
@@ -152,7 +152,7 @@ cd extreme-claude
   1. Verify or install Node.js (v22 LTS) and Astral `uv`.
   2. Install Python-based intelligence tools (`serena-agent`, `graphifyy`, and `scrapling[ai]`) via `uv`.
   3. Install `@anthropic-ai/claude-code`, `omniroute`, `claude-mem`, `skills`, and ecosystem CLIs globally via `npm`.
-  4. Deploy all 88 specialist agents, 27+ global skills, and merged MCP configurations to `~/.claude` and `~/.claude.json`.
+  4. Deploy all 88 specialist agents, 108 global skills, 183 plugins across 26 marketplaces, and merged MCP configurations to `~/.claude` and `~/.claude.json`.
 
 ---
 
@@ -203,6 +203,23 @@ All skills are installed at global user scope (`~/.claude/skills/`) and tracked 
 | **🌐 Web, Graph & Meta** | **`graphify`** | [`graphify-ai/graphify`](https://github.com/graphify-ai/graphify) | Persistent AST codebase knowledge graph indexing |
 | **🌐 Web, Graph & Meta** | **`find-skills`** | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | Discover and install community agent skills from skills.sh |
 | **🌐 Web, Graph & Meta** | **`caveman`** | [`juliusbrussee/caveman`](https://github.com/juliusbrussee/caveman) | Ultra-terse, high-density output mode minimizing token burn |
+| **⚡ Next.js Runtime** | **`next-dev-loop`** | [`vercel/next.js`](https://github.com/vercel/next.js) | Verify Next.js runtime behavior combining /_next/mcp and agent-browser |
+| **⚡ Next.js Runtime** | **`next-bundle-optimizer`** | [`vercel/next.js`](https://github.com/vercel/next.js) | Audit and reduce Next.js browser initial-load bundle work |
+| **⚡ Next.js Runtime** | **`next-cache-components-adoption`** | [`vercel/next.js`](https://github.com/vercel/next.js) | Adopt Cache Components and resolve blocking routes in Next.js |
+| **⚡ Next.js Runtime** | **`next-partial-prefetching-adoption`** | [`vercel/next.js`](https://github.com/vercel/next.js) | Adopt Partial Prefetching and verify prefetching behavior |
+| **🎨 Design & Craft** | **`impeccable`** | [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) | Design fluency, UX critique, polish, audit, and design tokens |
+| **📊 Diagram & Architecture** | **`diagram-design`** | [`cathrynlavery/diagram-design`](https://github.com/cathrynlavery/diagram-design) | Branded architecture, flowchart, sequence, ERD, and system diagrams |
+| **🧠 Codebase Comprehension** | **`understand`** | [`Egonex-AI/Understand-Anything`](https://github.com/Egonex-AI/Understand-Anything) | Interactive architectural knowledge graphs and component mapping |
+| **🧠 Codebase Comprehension** | **`understand-diff`** | [`Egonex-AI/Understand-Anything`](https://github.com/Egonex-AI/Understand-Anything) | Blast radius, dependency trace, and risk analysis for PRs |
+| **🎬 Video & Media Motion** | **`hyperframes`** | [`heygen-com/hyperframes`](https://github.com/heygen-com/hyperframes) | Create, edit, animate, and render production videos from HTML |
+| **🎬 Video & Media Motion** | **`hyperframes-cli`** | [`heygen-com/hyperframes`](https://github.com/heygen-com/hyperframes) | Video scaffolding, timeline inspection, and rendering pipeline |
+| **🛠️ Harness Engineering** | **`cli-anything`** | [`HKUDS/CLI-Anything`](https://github.com/HKUDS/CLI-Anything) | Build stateful CLI harnesses for GUI applications with Click & REPL |
+| **🎯 Cognitive Flow** | **`i-have-adhd`** | [`ayghri/i-have-adhd`](https://github.com/ayghri/i-have-adhd) | Action-first, numbered steps, tangent-free output shaping |
+| **📦 Headless CMS** | **`payload`** | [`payloadcms/payload`](https://github.com/payloadcms/payload) | Collections, fields, hooks, access control, and database adapters |
+| **💼 Career & Job Search** | **`career-ops`** | [`career-ops-hq/career-ops`](https://github.com/career-ops-hq/career-ops) | AI job search agent: scan portals, evaluate JDs, tailor CVs, and track applications |
+| **💼 Career & Job Search** | **`resume-tailor`** | [`reactive-resume/reactive-resume`](https://github.com/reactive-resume/reactive-resume) | Tailor resumes and cover letters with ATS keyword alignment |
+| **💼 Career & Job Search** | **`resume-builder`** | [`reactive-resume/reactive-resume`](https://github.com/reactive-resume/reactive-resume) | Build importable Reactive Resume JSON conforming to schema |
+| **💼 Career & Job Search** | **`mock-interview`** | [`reactive-resume/reactive-resume`](https://github.com/reactive-resume/reactive-resume) | Interactive scored mock interviews for specific roles and personas |
 
 ---
 
