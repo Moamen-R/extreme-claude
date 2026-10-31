@@ -1,8 +1,6 @@
-<div align="center">
-
-<img src="assets/banner.svg?raw=true" alt="Extreme Claude Banner" width="100%" />
-
-<br />
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Moamen-R/extreme-claude/main/assets/banner.svg" alt="Extreme Claude Banner" width="100%" />
+</p>
 
 # ⚡ Extreme Claude
 ### Universal Claude Code & Multi-Agent AI Engineering Ecosystem
