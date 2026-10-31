@@ -151,27 +151,26 @@ You are proactively responsible for evolving **Section 6 (`Dynamic Workspace & D
 *Claude: Automatically bootstrap, refine, and compact this section in-place as you work with the developer.*
 
 ### 6.1 Active Repository & Tech Stack Snapshot
-- **Project Purpose & Architecture**: `[AUTO-DETECT on first task: e.g., Full-Stack SaaS / Distributed API / AI Agent Platform]`
-- **Languages & Core Runtime**: `[AUTO-DETECT: e.g., TypeScript 5.x (Strict), Node 22 / Python 3.12 / Rust]`
-- **Frameworks & Key Libraries**: `[AUTO-DETECT: e.g., Next.js 15 App Router, React 19, Tailwind CSS, GSAP/Lenis, Prisma/Drizzle]`
-- **Data, State & Infrastructure**: `[AUTO-DETECT: e.g., PostgreSQL, Redis, Docker, Edge/Serverless]`
+- **Project Purpose & Architecture**: Turnkey 1-click cross-platform installer & ecosystem manager for Claude Code, 88 specialist agents, 108 global skills, 183 plugins (26 marketplaces), MCPs, and OmniRoute proxy.
+- **Languages & Core Runtime**: Node.js >=20, JavaScript (ESM/CJS), Bash ([install.sh](install.sh)), PowerShell ([Install-ClaudeSetup.ps1](Install-ClaudeSetup.ps1)), Python (`uv` / MCP toolchains).
+- **Frameworks & Key Libraries**: `@anthropic-ai/claude-code`, `skills` CLI, `omniroute`, `claude-mem`, `serena-agent`, `graphifyy`, `scrapling`.
+- **Data, State & Infrastructure**: Local SQLite (`storage.sqlite`), JSON configurations ([configs/.claude/settings.json](configs/.claude/settings.json), [configs/.claude.json](configs/.claude.json)), NPM Package ([package.json:2](package.json#L2)).
 
 ### 6.2 Canonical Verification & Workflow Commands
-- **Install / Bootstrap**: `[AUTO-DETECT: e.g., pnpm install / uv sync]`
-- **Dev / Watch Server**: `[AUTO-DETECT: e.g., pnpm dev]`
-- **Typecheck & Static Analysis**: `[AUTO-DETECT: e.g., pnpm typecheck && pnpm lint]`
-- **Unit & Integration Tests**: `[AUTO-DETECT: e.g., pnpm test (Vitest / Pytest)]`
-- **Single-File Test Command**: `[AUTO-DETECT: e.g., pnpm vitest run <path/to/file.test.ts>]`
+- **Install / Bootstrap**: `node bin/index.js` or `npm run install:windows` / `npm run install:linux`
+- **CLI Entrypoint Test**: `node bin/index.js --help && node bin/index.js --version`
+- **Update Ecosystem**: `node bin/index.js update`
+- **Sync Global Skills**: `npm run update:skills`
 - **Security & Code Review Gate**: `ocr review --audience agent`
 - **Knowledge Graph Sync**: `graphify update .` *(when `graphify-out/` is present)*
 
 ### 6.3 Learned Developer Preferences & Coding Style
 - **Code & Diff Discipline**: Prefer minimal viable diffs, early returns over deep nesting, strict end-to-end typing (zero `any`), and explicit error handling at boundaries.
 - **UI/UX & Visual Craft (When Touching Frontend)**: Favor modern, sleek component geometry, balanced grid symmetry, subtle ambient glows/gradients, strict Light/Dark theme parity, and 95–100 Lighthouse performance/accessibility scores.
-- *[Claude: Append or refine developer-specific workflow, formatting, and architectural preferences here as you observe them.]*
 
 ### 6.4 Active Architectural Invariants & Module Boundaries
-- *[Claude: Record critical source-of-truth files, state flow boundaries, auth/security middlewares, and design-system token paths with `[file:line](file#Lline)` links as you map the repo.]*
+- **Marketplaces & Plugins Source of Truth**: [configs/.claude/settings.json:32](configs/.claude/settings.json#L32) (`extraKnownMarketplaces`) and [configs/.claude/settings.json:400](configs/.claude/settings.json#L400) (`enabledPlugins`).
+- **Curated Skills Upstream Registry**: [configs/skills.json:1](configs/skills.json#L1) - installed to `~/.claude/skills/` and tracked in repo at [configs/.claude/skills/](configs/.claude/skills/).
 
 ### 6.5 "Scar Tissue" Registry (Project-Specific Anti-Regression Rules)
-- *[Claude: After fixing any subtle bug, hydration trap, build failure, or edge-case regression, log a 1-line prevention rule here (`[Symptom/Area]: Never do X; always do Y — see [file:line](file#Lline)`).]*
+- **[Windows Git Long Paths]**: Always ensure `git config --global core.longpaths true` is enabled before cloning deep/large plugin repositories (e.g., `vercel/next.js`) to prevent `Filename too long` checkout errors.
